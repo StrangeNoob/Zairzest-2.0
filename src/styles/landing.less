@@ -1,0 +1,54 @@
+.Landing-container {
+  background: url("../assets/bg.png");
+  height: 100vh;
+  width: 100vw;
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    .hero-content {
+      margin: auto 0;
+      padding-left: 6rem;
+      h1 {
+        color: white;
+        font-weight: 700;
+        font-size: 4rem;
+        width: 90%;
+        line-height: 5.5rem;
+      }
+      p {
+        margin-top: 1.2rem;
+        color: white;
+        width: 60%;
+        line-height: 1.5rem;
+      }
+      button {
+        margin-top: 2rem;
+        background-color: #fff;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        p {
+          background-image: linear-gradient(45deg, #2300ff, #e82e8a);
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          background-clip: text;
+          font-weight: 500;
+          font-size: 1.1rem;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          -moz-background-clip: text;
+          -moz-text-fill-color: transparent;
+        }
+        &:hover {
+          transition: all linear 0.1s;
+          transform: scale(0.99);
+        }
+      }
+    }
+    img {
+      height: 80vh;
+    }
+  }
+}
