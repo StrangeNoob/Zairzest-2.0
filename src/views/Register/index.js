@@ -2,10 +2,41 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const auth = getAuth();
+  const gooogleProvider = new GoogleAuthProvider();
+
+  const signUpUserButtonHandler = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((response) => {
+        console.log("Register Successfull!");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, gooogleProvider)
+      .then((response) => {
+        console.log("Register Successfull!");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="h-screen w-screen md:flex items-center bg-regalblue ">
       <div className="flex-1 bg-regalblue pl-8 md:pl-28 md:pr-0 ">
@@ -52,14 +83,29 @@ const Register = () => {
           </div>
           <div>
             <p className="text-md text-grayishfaint mt-4">
-              Already a Member Yet ? <span className="text-deepPinkish font-md cursor-pointer" onClick={()=>navigate('/login')}>Sign In</span>
+              Already a Member Yet ?{" "}
+              <span
+                className="text-deepPinkish font-md cursor-pointer"
+                onClick={() => navigate("/login")}
+              >
+                Sign In
+              </span>
             </p>
           </div>
           <div className="flex mt-4 justify-between items-center flex flex-col md:flex-row">
-            <button className="bg-buttonColor text-white text-md px-12  py-2 rounded-md border-none w-full md:w-fit">Sign Up</button>
+            <button
+              className="bg-buttonColor text-white text-md px-12  py-2 rounded-md border-none w-full md:w-fit"
+              onClick={signUpUserButtonHandler}
+            >
+              Sign Up
+            </button>
             <span className="text-grayishfaint">or</span>
-            <button className="bg-white border-2 border-gray-800 rounded-md px-8 py-2 font-medium flex items-center justify-center text-md w-full md:w-fit ">
-              Sign Up with<FcGoogle className="ml-2"/>
+            <button
+              className="bg-white border-2 border-gray-800 rounded-md px-8 py-2 font-medium flex items-center justify-center text-md w-full md:w-fit"
+              onClick={signInWithGoogle}
+            >
+              Sign Up with
+              <FcGoogle className="ml-2" />
             </button>
           </div>
         </div>
