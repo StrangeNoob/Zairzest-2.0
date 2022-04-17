@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   return (
     <div className="h-screen w-screen md:flex items-center bg-regalblue ">
       <div className="flex-1 bg-regalblue pl-8 md:pl-28 md:pr-0 ">
-        <h1 className="font-bold text-white text-3xl md:text-6xl mb-12">
+        <h1 className="font-bold text-white text-3xl md:text-6xl mb-12 tracking-wide">
           Experience the
           <br />
           Future Tech with
@@ -29,7 +29,7 @@ const Login = () => {
             Experience the Future Tech
           </h2>
           <p className="text-grayishfaint text-md mb-8">
-            Sign In to get into Zairzest
+            Register for Zairzest 2.0
           </p>
           <div className="rounded-lg border-2 border-stone-400 w-full p-1 mb-2">
             <input
@@ -52,17 +52,14 @@ const Login = () => {
           </div>
           <div>
             <p className="text-md text-grayishfaint mt-4">
-              Don’t remember Password ? <span className="text-deepPinkish font-md cursor-pointer">Reset Password</span>
-            </p>
-            <p className="text-md text-grayishfaint">
-              Not a Member Yet ? <span className="text-deepPinkish font-md cursor-pointer" onClick={()=>navigate('/signup')}>Sign Up</span>
+              Already a Member Yet ? <span className="text-deepPinkish font-md cursor-pointer" onClick={()=>navigate('/login')}>Sign In</span>
             </p>
           </div>
-          <div className="flex mt-4 justify-between items-center flex-col md:flex-row">
-            <button className="bg-buttonColor text-white text-md px-12  py-2 rounded-md border-none w-full md:w-fit">Login</button>
+          <div className="flex mt-4 justify-between items-center flex flex-col md:flex-row">
+            <button className="bg-buttonColor text-white text-md px-12  py-2 rounded-md border-none w-full md:w-fit">Sign Up</button>
             <span className="text-grayishfaint">or</span>
-            <button className="bg-white border-2 border-gray-800 rounded-md px-8 py-2 font-medium flex items-center justify-center text-md w-full md:w-fit">
-              Sign in with<FcGoogle className="ml-2"/>
+            <button className="bg-white border-2 border-gray-800 rounded-md px-8 py-2 font-medium flex items-center justify-center text-md w-full md:w-fit ">
+              Sign Up with<FcGoogle className="ml-2"/>
             </button>
           </div>
         </div>
@@ -71,4 +68,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
