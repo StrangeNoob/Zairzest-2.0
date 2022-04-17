@@ -1,19 +1,21 @@
 import React from "react";
-import {createRoot} from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import {BrowserRouter} from "react-router-dom"
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
+import { CookiesProvider } from "react-cookie";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
-
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <App />
+      <CookiesProvider>
+        <App />
+      </CookiesProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

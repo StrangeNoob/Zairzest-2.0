@@ -9,6 +9,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import { useCookies } from "react-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,11 +17,13 @@ const Login = () => {
   const navigate = useNavigate();
   const auth = getAuth();
   const gooogleProvider = new GoogleAuthProvider();
+  const [cookies, setCookie, removeCookie] = useCookies(["user-token"]);
 
   const loginUserButtonHandler = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
         console.log("Login Successfull!");
+        console.log(response);
       })
       .catch((error) => {
         console.log(error.message);
@@ -83,7 +86,7 @@ const Login = () => {
           </div>
           <div>
             <p className="text-md text-grayishfaint mt-4">
-              Don’t remember Password ?{" "}
+              Don't remember Password ?{" "}
               <span className="text-deepPinkish font-md cursor-pointer">
                 Reset Password
               </span>

@@ -8,23 +8,33 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  getIdToken,
+  onAuthStateChanged,
 } from "firebase/auth";
+import { useCookies } from "react-cookie";
 
 const Register = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
   const auth = getAuth();
   const gooogleProvider = new GoogleAuthProvider();
+  const [cookies, setCookie, removeCookie] = useCookies(["user-token"]);
 
   const signUpUserButtonHandler = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((response) => {
-        console.log("Register Successfull!");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+    if (password === confirmPassword) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((response) => {
+          console.log("Register Successfull!");
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    } else {
+      console.log("Passwords don't match");
+    }
   };
 
   const signInWithGoogle = () => {
@@ -36,6 +46,16 @@ const Register = () => {
         console.log(error.message);
       });
   };
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const userToken = await getIdToken(user);
+      // console.log(token);
+      setCookie("User_Token", userToken);
+    }
+  });
+
+  console.log(cookies.User_Token);
 
   return (
     <div className="h-screen w-screen md:flex items-center bg-regalblue ">
@@ -65,19 +85,38 @@ const Register = () => {
           <div className="rounded-lg border-2 border-stone-400 w-full p-1 mb-2">
             <input
               className="border-none focus:outline-none w-full h-full py-2 px-1 text-grayishfaint"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Your Name"
+            />
+          </div>
+          <div className="rounded-lg border-2 border-stone-400 w-full p-1 mb-2">
+            <input
+              className="border-none focus:outline-none w-full h-full py-2 px-1 text-grayishfaint"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email here"
             />
           </div>
-          <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center">
+          <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center mb-2">
             <input
               className="border-none focus:outline-none text-grayishfaint w-full h-full py-2 px-1"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
+            />
+            <AiOutlineEye size={24} color="#858585" />
+          </div>
+          <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center">
+            <input
+              className="border-none focus:outline-none text-grayishfaint w-full h-full py-2 px-1"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm Password"
             />
             <AiOutlineEye size={24} color="#858585" />
           </div>
