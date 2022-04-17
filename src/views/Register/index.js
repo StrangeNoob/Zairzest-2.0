@@ -12,9 +12,11 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { useCookies } from "react-cookie";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Register = () => {
-  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -28,6 +30,7 @@ const Register = () => {
       createUserWithEmailAndPassword(auth, email, password)
         .then((response) => {
           console.log("Register Successfull!");
+          console.log(response);
         })
         .catch((error) => {
           console.log(error.message);
@@ -41,6 +44,7 @@ const Register = () => {
     signInWithPopup(auth, gooogleProvider)
       .then((response) => {
         console.log("Register Successfull!");
+        console.log(response);
       })
       .catch((error) => {
         console.log(error.message);
@@ -51,11 +55,22 @@ const Register = () => {
     if (user) {
       const userToken = await getIdToken(user);
       // console.log(token);
-      setCookie("User_Token", userToken);
+      setCookie("userToken", userToken);
     }
   });
 
-  console.log(cookies.User_Token);
+  useEffect(() => {
+    axios
+      .post("https://zairzest-2.herokuapp.com/auth/signin", {
+        name: userName,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="h-screen w-screen md:flex items-center bg-regalblue ">
@@ -86,8 +101,8 @@ const Register = () => {
             <input
               className="border-none focus:outline-none w-full h-full py-2 px-1 text-grayishfaint"
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
               placeholder="Your Name"
             />
           </div>
