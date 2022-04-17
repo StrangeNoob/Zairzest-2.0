@@ -1,9 +1,12 @@
-import React from "react";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import "../../styles/landing.css";
 import VR from "../../assets/VR-MAN.png";
+import Mascot from "../../assets/mascot.png";
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
+  const navigate = useNavigate();
   return (
     <div className="Landing-container">
       <Navbar />
@@ -20,6 +23,48 @@ const Landing = () => {
         </div>
         <img src={VR} alt="" />
       </div>
+      <div className="second-section">
+        <div className="img-container">
+          <img src={Mascot} alt="" />
+        </div>
+        <div className="second-section-content">
+          <h1>Zen will guide you</h1>
+          <h3>Zest. For. Tech.</h3>
+          <p>
+            ‘The best way to live the future is to create it.’ Moving on from
+            the safari around the tech forest, we now bring you the city of
+            tech. Experience the new future with us. We shall lead you to
+            explore through the suburb of the cybercity, to drive into various
+            tech stacks, dev branches, recursion, trees and languages like
+            firefox and python. The Best is yet to come. Stay tuned for
+            something awesome!.
+          </p>
+        </div>
+      </div>
+      <div className="third-section">
+        <h1>Events for you</h1>
+        <div>
+          <p>
+            Everything has been made simple for you to scroll around and get the
+            most out of the options available.
+          </p>
+        </div>
+        <div className="event-container">
+          <div
+            className="card-container tech"
+            onClick={() => navigate("/signup")}
+          ></div>
+          <div
+            className="card-container management"
+            onClick={() => navigate("/signup")}
+          ></div>
+          <div
+            className="card-container fun"
+            onClick={() => navigate("/signup")}
+          ></div>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };
