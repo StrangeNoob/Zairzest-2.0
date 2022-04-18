@@ -12,28 +12,34 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { useCookies } from "react-cookie";
+import axios from "axios";
+import { useEffect } from "react";
+import { async } from "@firebase/util";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Register = () => {
-  const [name, setName] = useState("");
+const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
   const auth = getAuth();
   const gooogleProvider = new GoogleAuthProvider();
-  const [cookies, setCookie, removeCookie] = useCookies(["user-token"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
 
   const signUpUserButtonHandler = () => {
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((response) => {
           console.log("Register Successfull!");
+          // console.log(response);
+          auth.currentUser.getIdToken().then((res) => signUp(res));
         })
         .catch((error) => {
-          console.log(error.message);
+          toast.error(error.message);
         });
     } else {
-      console.log("Passwords don't match");
+      toast.error("Passwords don't match");
     }
   };
 
@@ -41,24 +47,47 @@ const Register = () => {
     signInWithPopup(auth, gooogleProvider)
       .then((response) => {
         console.log("Register Successfull!");
+        console.log(response);
+        auth.currentUser.getIdToken().then((res) => signUp(res));
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
 
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const userToken = await getIdToken(user);
-      // console.log(token);
-      setCookie("User_Token", userToken);
-    }
-  });
+  // onAuthStateChanged(auth, async (user) => {
+  //   if (user) {
+  //     const userToken = await getIdToken(user);
+  //     console.log(userToken);
+  //     setCookie("userToken", userToken);
+  //   }
+  // });
 
-  console.log(cookies.User_Token);
+  async function signUp(userToken) {
+    axios
+      .get("https://zairzest-2.herokuapp.com/auth/signup", {
+        headers: {
+          Authorization: userToken,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.status == 200 || res.data.status == 201) {
+          toast.success(res.data.message);
+          setCookie("userToken", res.data.token);
+        } else {
+          toast.error("Some error occured");
+        }
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+        toast.error(err.response.data.message);
+      });
+  }
 
   return (
     <div className="h-screen w-screen md:flex items-center bg-regalblue ">
+      <ToastContainer />
       <div className="flex-1 bg-regalblue pl-8 md:pl-28 md:pr-0 ">
         <h1 className="font-bold text-white text-3xl md:text-6xl mb-12 tracking-wide">
           Experience the
@@ -82,15 +111,6 @@ const Register = () => {
           <p className="text-grayishfaint text-md mb-8">
             Register for Zairzest 2.0
           </p>
-          <div className="rounded-lg border-2 border-stone-400 w-full p-1 mb-2">
-            <input
-              className="border-none focus:outline-none w-full h-full py-2 px-1 text-grayishfaint"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your Name"
-            />
-          </div>
           <div className="rounded-lg border-2 border-stone-400 w-full p-1 mb-2">
             <input
               className="border-none focus:outline-none w-full h-full py-2 px-1 text-grayishfaint"
@@ -153,4 +173,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SignUp;
