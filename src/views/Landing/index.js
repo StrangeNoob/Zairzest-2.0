@@ -16,6 +16,7 @@ const Landing = () => {
         scrollToZen={() => {
           scrollToZen();
         }}
+        aboutUs={true}
       />
       <div className="hero">
         <div className="hero-content">

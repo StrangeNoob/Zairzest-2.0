@@ -6,7 +6,7 @@ import "../../styles/events.css"
 const TechEvents = () => {
     return (
         <>
-            <Navbar />
+            <Navbar aboutUs={false} />
             <div className="nav-background"></div>
             <div className='events-container'>
                 {techEvents.map((event) => {

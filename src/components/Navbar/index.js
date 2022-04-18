@@ -4,7 +4,7 @@ import zairzestLogo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import ham from "../../assets/menu.png";
 
-const Navbar = ({ scrollToZen }) => {
+const Navbar = ({ scrollToZen, aboutUs }) => {
   const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
@@ -27,12 +27,20 @@ const Navbar = ({ scrollToZen }) => {
   return (
     <>
       <div className="navbar-container">
-        <div className="img-container">
+        <div
+          className="img-container"
+          onClick={() => navigate("/")}
+          style={{ cursor: "pointer" }}
+        >
           <img src={zairzestLogo} alt="" />
         </div>
         <div className="menu-container">
           {/* <button onClick={() => navigate("/about")}>About Us</button> */}
-          <button onClick={() => scrollToZen()}>About Us</button>
+          {aboutUs ? (
+            <button onClick={() => scrollToZen()}>About Us</button>
+          ) : (
+            ""
+          )}
           <button onClick={() => navigate("/ComingSoon")}>Register</button>
           <button onClick={() => navigate("/ComingSoon")}>Sign In</button>
           {/* <button onClick={() => navigate("/signup")}>Register</button>
