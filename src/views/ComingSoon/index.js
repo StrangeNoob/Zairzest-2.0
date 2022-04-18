@@ -5,7 +5,7 @@ import useWindowDimensions from "../../CustomHooks/windowDimension";
 import "../../styles/comingSoon.css";
 const ComingSoon = () => {
   const { height, width } = useWindowDimensions();
-  const [isSidebar, setIsSidebar] = useState(false);
+  const [isSidebar, setIsSidebar] = useState    (false);
 
   return isSidebar ? (
     <Sidebar
