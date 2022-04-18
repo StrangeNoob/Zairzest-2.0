@@ -11,7 +11,7 @@ const Events = () => {
             <div className='events-container'>
                 {events.map((event) => {
                     return (<div className='card-container'>
-                        Hello
+                        <img src={event.imageURL} alt="" style={{ width: "19rem", height: "24rem" }} />
                     </div>)
                 })}
             </div>

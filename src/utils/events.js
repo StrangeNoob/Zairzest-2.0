@@ -7,14 +7,14 @@ export const events = [
         "imageURL": "/assets/event/Rescue Rangers.webp",
         "category": "tech"
     },
-    {
-        "id": 2,
-        "name": "Code War",
-        "description": "A competitive coding challenge in which participating teams must code in order to solve the provided issues in the time permitted.",
-        "smallDescription": "Programming contest",
-        "imageURL": "",
-        "category": "tech"
-    },
+    // {
+    //     "id": 2,
+    //     "name": "Code War",
+    //     "description": "A competitive coding challenge in which participating teams must code in order to solve the provided issues in the time permitted.",
+    //     "smallDescription": "Programming contest",
+    //     "imageURL": "",
+    //     "category": "tech"
+    // },
     {
         "id": 3,
         "name": "Dig The Web",
@@ -55,14 +55,14 @@ export const events = [
         "imageURL": "/assets/event/Robo Dangal.webp",
         "category": "tech"
     },
-    {
-        "id": 8,
-        "name": "Web Weavers",
-        "description": "The participants will be provided with mini-tasks relating to Web Development. Their final work (after the completion of specified time) will be evaluated to check if they meet the specified criteria for the problem statement.",
-        "smallDescription": "Weave the Move",
-        "imageURL": "",
-        "category": "tech"
-    },
+    // {
+    //     "id": 8,
+    //     "name": "Web Weavers",
+    //     "description": "The participants will be provided with mini-tasks relating to Web Development. Their final work (after the completion of specified time) will be evaluated to check if they meet the specified criteria for the problem statement.",
+    //     "smallDescription": "Weave the Move",
+    //     "imageURL": "",
+    //     "category": "tech"
+    // },
     {
         "id": 9,
         "name": "UAV Killer",
@@ -79,22 +79,22 @@ export const events = [
         "imageURL": "/assets/event/Design Challenge.webp",
         "category": "tech"
     },
-    {
-        "id": 11,
-        "name": "Tech Paper presentation",
-        "description": "Be a part of some exciting research paper presentations in the automobile field. Showcase your talent on any kind of advancement that you would like to see in the automobile industry and get an opportunity to get involved in the actual implementation of that project, if feasible.",
-        "smallDescription": "Unleash the writer",
-        "imageURL": "",
-        "category": "tech"
-    },
-    {
-        "id": 12,
-        "name": "Datathon",
-        "description": "The participating teams will be given a dataset. The student have to find how accurate the given data is.",
-        "smallDescription": "Test the accuracy",
-        "imageURL": "",
-        "category": "tech"
-    },
+    // {
+    //     "id": 11,
+    //     "name": "Tech Paper presentation",
+    //     "description": "Be a part of some exciting research paper presentations in the automobile field. Showcase your talent on any kind of advancement that you would like to see in the automobile industry and get an opportunity to get involved in the actual implementation of that project, if feasible.",
+    //     "smallDescription": "Unleash the writer",
+    //     "imageURL": "",
+    //     "category": "tech"
+    // },
+    // {
+    //     "id": 12,
+    //     "name": "Datathon",
+    //     "description": "The participating teams will be given a dataset. The student have to find how accurate the given data is.",
+    //     "smallDescription": "Test the accuracy",
+    //     "imageURL": "",
+    //     "category": "tech"
+    // },
     {
         "id": 13,
         "name": "Logo Quiz",
