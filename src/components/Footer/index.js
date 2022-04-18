@@ -34,7 +34,7 @@ const Footer = () => {
                     <a
                         rel="”noreferrer”"
                         target="_blank"
-                        href="https://www.instagram.com/zairza.cetb"
+                        href="https://www.instagram.com/zairza.outr"
                     ><img
                             src={instagram}
                             alt=""

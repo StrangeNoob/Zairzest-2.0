@@ -4,10 +4,12 @@ import zairzestLogo from "../../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi"
 import { useNavigate } from "react-router-dom";
 import ham from "../../assets/menu.png";
+import useWindowDimensions from "../../CustomHooks/windowDimension";
 
 
-const Navbar = ({width,handleSidebar}) => {
+const Navbar = ({scrollToZen, aboutUs,handleSidebar}) => {
   const navigate = useNavigate();
+  const { width,height} = useWindowDimensions();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,16 +32,24 @@ const Navbar = ({width,handleSidebar}) => {
   return (
     <>
       <div className="navbar-container">
-        <div className="img-container">
+        <div
+          className="img-container"
+          onClick={() => navigate("/")}
+          style={{ cursor: "pointer" }}
+        >
           <img src={zairzestLogo} alt="" />
         </div>
         {
           width>720 ? 
           <div className="menu-container">
-          <button onClick={() => navigate("/about")}>About Us</button>
-          <button onClick={() => navigate("/signup")}>Register</button>
-          <button onClick={() => navigate("/login")}>Sign In</button>
-        </div>:
+          {aboutUs ? (
+            <button onClick={() => scrollToZen()}>About Us</button>
+          ) : (
+            ""
+          )}
+          <button onClick={() => navigate("/ComingSoon")}>Register</button>
+          <button onClick={() => navigate("/ComingSoon")}>Sign In</button>
+       </div>:
         <div>
           <GiHamburgerMenu color="#fff" size={30} onClick={handleSidebar}/>
         </div>

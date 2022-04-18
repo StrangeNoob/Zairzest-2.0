@@ -29,7 +29,7 @@
 }
 @media (max-width: 768px) {
   .navbar-container{
-    padding:1rem 1rem;
+    padding:1rem 1rem !important;
   }
   .navbar-container .img-container img {
     width: 10rem;

@@ -1,4 +1,81 @@
-export const events = [
+export const funEvents = [
+
+    {
+        "id": 18,
+        "name": "Programemer",
+        "description": "Memes that are based on tech-stacks",
+        "smallDescription": "Meme competetion",
+        "imageURL": "/assets/event/Programemer.webp",
+        "category": "fun"
+    },
+    {
+        "id": 19,
+        "name": "United Gamers League",
+        "description": "Amazing gaming events will be there where you will be participating and having fun",
+        "smallDescription": "Experience the thrill",
+        "imageURL": "/assets/event/United Gamer Leauge.webp",
+        "category": "fun"
+    },
+    {
+        "id": 20,
+        "name": "Gnome Theater",
+        "description": "You have to guess the movie name with the help of Movie Monologues.",
+        "smallDescription": "Predict the movie",
+        "imageURL": "/assets/event/Gnome Theatre.webp",
+        "category": "fun"
+    },
+    {
+        "id": 21,
+        "name": "Twister",
+        "description": "A spinner is affixed to a square board and used to determine where the player's hand or foot should be placed. Left foot, right foot, left hand, and right hand are the four designated components of the spinner. The four colours are separated into four portions in each of those four divisions (red, yellow, green, and blue). No two participants can have their hands or feet on the same circle. Due to the lack of coloured circles, players will frequently be forced to place themselves in unusual or perilous places, resulting in someone falling. When a person falls or their elbow or knee strikes the mat, they are eliminated.",
+        "smallDescription": "Colour Magic",
+        "imageURL": "/assets/event/Twister Game.webp",
+        "category": "fun"
+    },
+    {
+        "id": 17,
+        "name": "Paper Wing Challenge",
+        "description": "No kerosene, no engines required! The 'Paper Wings Challenge' challenges you to design and create a paper plane from a given sheet of paper and throw it farther than anyone else. The paper planes will be judged based on the maximum height of the projectile, the flight time and distance covered. So let the wings flutter and join us to fly beyond the sky.",
+        "smallDescription": "Let it Fly!!",
+        "imageURL": "/assets/event/Paper Wing challenge.webp",
+        "category": "tech"
+    },
+    {
+        "id": 14,
+        "name": "Treasure Hunt",
+        "description": "It's a treasure hunt with its own set of thrills. This is a competition in which teams can only find clues to the target if they solve a riddle, conundrum, or question based on or related to the automobile industry.",
+        "smallDescription": "Find the clue",
+        "imageURL": "/assets/event/Treasure Hunt.webp",
+        "category": "tech"
+    },
+    {
+        "id": 13,
+        "name": "Logo Quiz",
+        "description": "Do you ever think about how brilliant it was to use a simple emblem to express what something means? Do you find yourself awestruck by their beauty? Do you have what it takes to figure out whose logo it is, and, more importantly, do you have what it takes to identify who designed it? Come guess the most well-known logos, which we all encounter on a regular basis, and you may win.",
+        "smallDescription": "Recognise the brand",
+        "imageURL": "/assets/event/Logo Quiz.webp",
+        "category": "tech"
+    },
+
+    {
+        "id": 15,
+        "name": "Biz Quiz",
+        "description": "The 'Biz Quiz' is a business quiz, which will encompass all things related to business including origins, logos and innovations.",
+        "smallDescription": "Dig through the business",
+        "imageURL": "/assets/event/Biz Quiz.webp",
+        "category": "tech"
+    },
+    {
+        "id": 16,
+        "name": "Shark Tank",
+        "description": "The participants have to pitch their business ideas.",
+        "smallDescription": "Pitch your deal.",
+        "imageURL": "/assets/event/Shark Tank.webp",
+        "category": "tech"
+    },
+]
+
+export const techEvents = [
     {
         "id": 1,
         "name": "Rescue Rangers",
@@ -95,78 +172,11 @@ export const events = [
     //     "imageURL": "",
     //     "category": "tech"
     // },
-    {
-        "id": 13,
-        "name": "Logo Quiz",
-        "description": "Do you ever think about how brilliant it was to use a simple emblem to express what something means? Do you find yourself awestruck by their beauty? Do you have what it takes to figure out whose logo it is, and, more importantly, do you have what it takes to identify who designed it? Come guess the most well-known logos, which we all encounter on a regular basis, and you may win.",
-        "smallDescription": "Recognise the brand",
-        "imageURL": "/assets/event/Logo Quiz.webp",
-        "category": "tech"
-    },
-    {
-        "id": 14,
-        "name": "Treasure Hunt",
-        "description": "It's a treasure hunt with its own set of thrills. This is a competition in which teams can only find clues to the target if they solve a riddle, conundrum, or question based on or related to the automobile industry.",
-        "smallDescription": "Find the clue",
-        "imageURL": "/assets/event/Treasure Hunt.webp",
-        "category": "tech"
-    },
-    {
-        "id": 15,
-        "name": "Biz Quiz",
-        "description": "The 'Biz Quiz' is a business quiz, which will encompass all things related to business including origins, logos and innovations.",
-        "smallDescription": "Dig through the business",
-        "imageURL": "/assets/event/Biz Quiz.webp",
-        "category": "tech"
-    },
-    {
-        "id": 16,
-        "name": "Shark Tank",
-        "description": "The participants have to pitch their business ideas.",
-        "smallDescription": "Pitch your deal.",
-        "imageURL": "/assets/event/Shark Tank.webp",
-        "category": "tech"
-    },
-    {
-        "id": 17,
-        "name": "Paper Wing Challenge",
-        "description": "No kerosene, no engines required! The 'Paper Wings Challenge' challenges you to design and create a paper plane from a given sheet of paper and throw it farther than anyone else. The paper planes will be judged based on the maximum height of the projectile, the flight time and distance covered. So let the wings flutter and join us to fly beyond the sky.",
-        "smallDescription": "Let it Fly!!",
-        "imageURL": "/assets/event/Paper Wing challenge.webp",
-        "category": "tech"
-    },
-    {
-        "id": 18,
-        "name": "Programemer",
-        "description": "Memes that are based on tech-stacks",
-        "smallDescription": "Meme competetion",
-        "imageURL": "/assets/event/Programemer.webp",
-        "category": "fun"
-    },
-    {
-        "id": 19,
-        "name": "United Gamers League",
-        "description": "Amazing gaming events will be there where you will be participating and having fun",
-        "smallDescription": "Experience the thrill",
-        "imageURL": "/assets/event/United Gamer Leauge.webp",
-        "category": "fun"
-    },
-    {
-        "id": 20,
-        "name": "Gnome Theater",
-        "description": "You have to guess the movie name with the help of Movie Monologues.",
-        "smallDescription": "Predict the movie",
-        "imageURL": "/assets/event/Gnome Theatre.webp",
-        "category": "fun"
-    },
-    {
-        "id": 21,
-        "name": "Twister",
-        "description": "A spinner is affixed to a square board and used to determine where the player's hand or foot should be placed. Left foot, right foot, left hand, and right hand are the four designated components of the spinner. The four colours are separated into four portions in each of those four divisions (red, yellow, green, and blue). No two participants can have their hands or feet on the same circle. Due to the lack of coloured circles, players will frequently be forced to place themselves in unusual or perilous places, resulting in someone falling. When a person falls or their elbow or knee strikes the mat, they are eliminated.",
-        "smallDescription": "Colour Magic",
-        "imageURL": "/assets/event/Twister Game.webp",
-        "category": "fun"
-    },
+
+
+]
+
+export const workshopEvents = [
     {
         "id": 22,
         "name": "NFT Session",
@@ -183,14 +193,14 @@ export const events = [
         "imageURL": "/assets/event/Design Session.webp",
         "category": "workshop"
     },
-    {
-        "id": 24,
-        "name": "Drone Workshop",
-        "description": "Assigned Speaker will give a talk on his/her topic",
-        "smallDescription": "",
-        "imageURL": "/assets/event/Drone Workshop.webp",
-        "category": "workshop"
-    },
+    // {
+    //     "id": 24,
+    //     "name": "Drone Workshop",
+    //     "description": "Assigned Speaker will give a talk on his/her topic",
+    //     "smallDescription": "",
+    //     "imageURL": "/assets/event/Drone Workshop.webp",
+    //     "category": "workshop"
+    // },
     {
         "id": 25,
         "name": "IOT Workshop",

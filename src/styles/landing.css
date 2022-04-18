@@ -217,13 +217,13 @@
   background-position: center;
 }
 .Landing-container .third-section .event-container .tech {
-  background-image: url("../assets/tech.png");
+  background-image: url("../assets/techEvents.png");
 }
 .Landing-container .third-section .event-container .management {
-  background-image: url("../assets/management.png");
+  background-image: url("../assets/funEvents.png");
 }
 .Landing-container .third-section .event-container .fun {
-  background-image: url("../assets/fun.png");
+  background-image: url("../assets/workshop.png");
 }
 @media (max-width: 1024px) {
   .Landing-container .third-section {

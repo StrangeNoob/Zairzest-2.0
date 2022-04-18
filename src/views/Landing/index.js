@@ -11,11 +11,31 @@ const Landing = () => {
   const navigate = useNavigate();
   const { height, width } = useWindowDimensions();
   const [isSidebar, setIsSidebar] = useState(false);
+
+  const scrollToZen = () => {
+    document.getElementById("about").scrollIntoView();
+  };
   return isSidebar ? (
-    <Sidebar handleSidebar={() => setIsSidebar(false)} />
+    <Sidebar
+      scrollToZen={() => 
+        scrollToZen()
+      }
+      handleSidebar={() =>{
+        setIsSidebar(false)
+      }
+      }
+    />
   ) : (
     <div className="Landing-container">
-      <Navbar width={width} handleSidebar={() => setIsSidebar(true)} />
+      <Navbar
+        scrollToZen={() => {
+          scrollToZen();
+        }}
+        aboutUs={true}
+        width={width}
+        handleSidebar={() => {
+          setIsSidebar(true);}}
+      />
       <div className="hero">
         <div className="hero-content">
           <h1>Experience the Future Tech with Zairza</h1>
@@ -23,13 +43,13 @@ const Landing = () => {
             Release all your stress with the exciting Tech and Fun events in the
             most awaited fest. Zairza 2.0 presented by Zairza.
           </p>
-          <button className="shadow-xl">
+          <button className="shadow-xl" onClick={() => navigate("/ComingSoon")}>
             <p>Register Now</p>
           </button>
         </div>
         <img src={VR} alt="" />
       </div>
-      <div className="second-section">
+      <div className="second-section" id="about">
         <div className="img-container">
           <img src={Mascot} alt="" />
         </div>
@@ -58,15 +78,15 @@ const Landing = () => {
         <div className="event-container">
           <div
             className="card-container tech"
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/tech")}
           ></div>
           <div
             className="card-container management"
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/fun")}
           ></div>
           <div
             className="card-container fun"
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/workshop")}
           ></div>
         </div>
       </div>
