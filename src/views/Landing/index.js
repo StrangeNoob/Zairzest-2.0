@@ -4,12 +4,18 @@ import "../../styles/landing.css";
 import VR from "../../assets/VR-MAN.png";
 import Mascot from "../../assets/mascot.png";
 import { useNavigate } from "react-router-dom";
-
+import useWindowDimensions from "../../CustomHooks/windowDimension";
+import Sidebar from "../../components/Sidebar";
+import { useState } from "react";
 const Landing = () => {
   const navigate = useNavigate();
-  return (
+  const { height, width } = useWindowDimensions();
+  const [isSidebar, setIsSidebar] = useState(false);
+  return isSidebar ? (
+    <Sidebar handleSidebar={() => setIsSidebar(false)} />
+  ) : (
     <div className="Landing-container">
-      <Navbar />
+      <Navbar width={width} handleSidebar={() => setIsSidebar(true)} />
       <div className="hero">
         <div className="hero-content">
           <h1>Experience the Future Tech with Zairza</h1>

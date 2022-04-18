@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import "../../styles/navbar.css";
 import zairzestLogo from "../../assets/logo.png";
+import { GiHamburgerMenu } from "react-icons/gi"
 import { useNavigate } from "react-router-dom";
 import ham from "../../assets/menu.png";
 
-const Navbar = () => {
+
+const Navbar = ({width,handleSidebar}) => {
   const navigate = useNavigate();
+
   useEffect(() => {
     const handleScroll = () => {
       const show = window.scrollY > 100;
@@ -30,11 +33,18 @@ const Navbar = () => {
         <div className="img-container">
           <img src={zairzestLogo} alt="" />
         </div>
-        <div className="menu-container">
+        {
+          width>720 ? 
+          <div className="menu-container">
           <button onClick={() => navigate("/about")}>About Us</button>
           <button onClick={() => navigate("/signup")}>Register</button>
           <button onClick={() => navigate("/login")}>Sign In</button>
+        </div>:
+        <div>
+          <GiHamburgerMenu color="#fff" size={30} onClick={handleSidebar}/>
         </div>
+        }
+        
       </div>
     </>
   );

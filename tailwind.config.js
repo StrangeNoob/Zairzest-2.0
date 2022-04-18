@@ -7,11 +7,12 @@ module.exports = {
       colors:{
         'regalbluefont':'#01265D',
         'grayishfaint':'#858585',
-        'deepPinkish':'#E82E8A'
+        'deepPinkish':'#E82E8A',
       },
       backgroundColor:{
         'regalblue':'#00255C',
-        "buttonColor":"#01265D"
+        "buttonColor":"#01265D",
+        "pinkPallete":"#e82e8a"
       }
     },
   },
