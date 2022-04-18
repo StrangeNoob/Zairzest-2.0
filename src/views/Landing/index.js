@@ -7,9 +7,16 @@ import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
   const navigate = useNavigate();
+  const scrollToZen = () => {
+    document.getElementById("about").scrollIntoView();
+  };
   return (
     <div className="Landing-container">
-      <Navbar />
+      <Navbar
+        scrollToZen={() => {
+          scrollToZen();
+        }}
+      />
       <div className="hero">
         <div className="hero-content">
           <h1>Experience the Future Tech with Zairza</h1>
@@ -17,13 +24,13 @@ const Landing = () => {
             Release all your stress with the exciting Tech and Fun events in the
             most awaited fest. Zairza 2.0 presented by Zairza.
           </p>
-          <button className="shadow-xl">
+          <button className="shadow-xl" onClick={() => navigate("/ComingSoon")}>
             <p>Register Now</p>
           </button>
         </div>
         <img src={VR} alt="" />
       </div>
-      <div className="second-section">
+      <div className="second-section" id="about">
         <div className="img-container">
           <img src={Mascot} alt="" />
         </div>
@@ -52,15 +59,15 @@ const Landing = () => {
         <div className="event-container">
           <div
             className="card-container tech"
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/tech")}
           ></div>
           <div
             className="card-container management"
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/fun")}
           ></div>
           <div
             className="card-container fun"
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/workshop")}
           ></div>
         </div>
       </div>
