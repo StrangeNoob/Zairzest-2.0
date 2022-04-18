@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import "../../styles/navbar.css";
 import zairzestLogo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
+import ham from "../../assets/menu.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
-      const show = window.scrollY > 150;
+      const show = window.scrollY > 100;
       var nav = document.getElementsByClassName("navbar-container")[0];
       if (show) {
         nav.style.backgroundColor = "rgba(0,0,0,0.7)";
@@ -24,16 +25,18 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="navbar-container">
-      <div className="img-container">
-        <img src={zairzestLogo} alt="" />
+    <>
+      <div className="navbar-container">
+        <div className="img-container">
+          <img src={zairzestLogo} alt="" />
+        </div>
+        <div className="menu-container">
+          <button onClick={() => navigate("/about")}>About Us</button>
+          <button onClick={() => navigate("/signup")}>Register</button>
+          <button onClick={() => navigate("/login")}>Sign In</button>
+        </div>
       </div>
-      <div className="menu-container">
-        <button onClick={() => navigate("/about")}>About Us</button>
-        <button onClick={() => navigate("/signup")}>Register</button>
-        <button onClick={() => navigate("/login")}>Sign In</button>
-      </div>
-    </div>
+    </>
   );
 };
 

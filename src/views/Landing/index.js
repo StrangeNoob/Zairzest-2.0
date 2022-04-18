@@ -17,7 +17,7 @@ const Landing = () => {
             Release all your stress with the exciting Tech and Fun events in the
             most awaited fest. Zairza 2.0 presented by Zairza.
           </p>
-          <button>
+          <button className="shadow-xl">
             <p>Register Now</p>
           </button>
         </div>

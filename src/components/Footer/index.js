@@ -10,8 +10,8 @@ const Footer = () => {
     return (
         <div className='footer-container'>
             <h1>Want to know about us?</h1>
-            <div className='flex align-center justify-between'>
-                <p className='text-white text-lg w-1/2'>Come and know more about Zairza and know more about our community to experience such more amazing stuffs.</p>
+            <div className='flex align-center justify-between flex-col lg:flex-row'>
+                <p className='text-white text-lg w-full lg:w-1/2'>Come and know more about Zairza and know more about our community to experience such more amazing stuffs.</p>
                 <div class="socials flex items-center">
                     <a
                         rel="noreferrer"
@@ -51,12 +51,12 @@ const Footer = () => {
                         /></a>
                 </div>
             </div>
-            <div className='text-white mt-12 flex align-center justify-between'>
-                <p className='flex-1'>OUTR (CET Campus), Kalinga Nagar, Ghatikia, Bhubaneswar, Odisha.
+            <div className='text-white mt-12 flex align-center justify-between flex-col lg:flex-row'>
+                <p className='flex-2'>OUTR (CET Campus), Kalinga Nagar, Ghatikia, Bhubaneswar, Odisha.
                     <br />
                     +91 7205400596, +91 7978909955
                 </p>
-                <div className='flex justify-end flex-1' style={{ alignItems: "center" }}>
+                <div className='flex justify-start lg:justify-end flex-1 mt-8 lg:mt-0' style={{ alignItems: "center" }}>
                     <i className='mr-4'>Presented by</i>
                     <img src={zairza} alt="" />
                 </div>

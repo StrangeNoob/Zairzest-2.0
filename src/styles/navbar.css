@@ -11,6 +11,12 @@
   width: 17rem;
   height: 2rem;
 }
+@media (max-width: 1024px) {
+  .navbar-container .img-container img {
+    width: 13rem;
+    height: 1.5rem;
+  }
+}
 .navbar-container .menu-container {
   display: flex;
   align-items: center;
@@ -20,4 +26,18 @@
   padding: 0 3.5rem;
   font-size: 1.2rem;
   color: white;
+}
+@media (max-width: 768px) {
+  .navbar-container .img-container img {
+    width: 10rem;
+    height: 1.2rem;
+  }
+  .navbar-container .menu-container button {
+    padding: 0 1rem;
+  }
+}
+@media (max-width: 426px) {
+  .navbar-container {
+    display: none;
+  }
 }

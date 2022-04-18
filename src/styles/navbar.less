@@ -10,6 +10,10 @@
     img {
       width: 17rem;
       height: 2rem;
+      @media (max-width: 1024px) {
+        width: 13rem;
+        height: 1.5rem;
+      }
     }
   }
   .menu-container {
@@ -21,5 +25,21 @@
       font-size: 1.2rem;
       color: white;
     }
+  }
+  @media (max-width: 768px) {
+    .img-container {
+      img {
+        width: 10rem;
+        height: 1.2rem;
+      }
+    }
+    .menu-container {
+      button {
+        padding: 0 1rem;
+      }
+    }
+  }
+  @media (max-width: 426px) {
+    display: none;
   }
 }
