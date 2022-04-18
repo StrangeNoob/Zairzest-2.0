@@ -32,7 +32,6 @@ const Landing = () => {
           scrollToZen();
         }}
         aboutUs={true}
-        width={width}
         handleSidebar={() => {
           setIsSidebar(true);}}
       />
