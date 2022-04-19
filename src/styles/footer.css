@@ -1,5 +1,5 @@
 .footer-container {
-  height: 70vh;
+  /* height: 70vh; */
   background-color: #191436;
   padding: 8rem 6rem;
 }
@@ -48,7 +48,7 @@
 @media (max-width: 426px) {
   .footer-container {
     height: max-content;
-    padding: 8rem 2rem;
+    padding: 6rem 2rem;
   }
   .footer-container h1 {
     font-size: 2.5rem;
