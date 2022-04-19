@@ -15,6 +15,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useEffect } from "react";
 import { async } from "@firebase/util";
+import { config } from "../../config"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -57,7 +58,7 @@ const SignUp = () => {
 
   function signUp(userToken) {
     axios
-      .get("http://localhost:3001/auth/signup", {
+      .get(`${config.BASE_URL}/auth/signup`, {
         headers: {
           Authorization: userToken,
         },
