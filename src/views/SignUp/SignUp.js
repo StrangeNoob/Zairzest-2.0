@@ -25,7 +25,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const auth = getAuth();
   const gooogleProvider = new GoogleAuthProvider();
-  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
+  const [cookies, setCookie] = useCookies(["userToken"]);
 
   const signUpUserButtonHandler = () => {
     if (password === confirmPassword) {
@@ -55,27 +55,25 @@ const SignUp = () => {
       });
   };
 
-
-  async function signUp(userToken) {
+  function signUp(userToken) {
     axios
-      .get("https://zairzest-2.herokuapp.com/auth/signup", {
+      .get("http://localhost:3001/auth/signup", {
         headers: {
           Authorization: userToken,
         },
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data.status === 200 || res.data.status === 201) {
           toast.success(res.data.message);
           console.log(res.data.data);
           setCookie("userToken", res.data.token);
-
+          navigate("/register", { state: res.data.data });
         } else {
           toast.error("Some error occured");
         }
       })
       .catch((err) => {
-        console.log(err.response.data.message);
+        console.log(err.response.data.data);
         toast.error(err.response.data.message);
       });
   }
