@@ -65,6 +65,9 @@
           width: 100%;
         }
       }
+      img {
+        height: 66vh;
+      }
     }
     @media (max-width: 768px) {
       height: max-content;
@@ -209,7 +212,7 @@
         cursor: pointer;
         margin: 2rem 1rem;
         max-width: 24rem;
-        height: 15rem;
+        height: 12rem;
         border-radius: 8px;
         background-repeat: no-repeat;
         background-size: cover;
@@ -227,6 +230,13 @@
     }
     @media (max-width: 1024px) {
       height: max-content;
+      .event-container {
+        .card-container {
+          min-width: 18rem;
+          height: 9rem;
+          background-position: bottom;
+        }
+      }
     }
     @media (max-width: 768px) {
       div {
@@ -245,8 +255,8 @@
       }
       .event-container {
         .card-container {
-          min-width: 20rem;
-          height: 10rem;
+          min-width: 15rem;
+          height: 7.5rem;
           background-position: bottom;
         }
       }

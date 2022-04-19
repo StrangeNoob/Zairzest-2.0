@@ -65,6 +65,9 @@
   .Landing-container .hero .hero-content p {
     width: 100%;
   }
+  .Landing-container .hero img {
+    height: 66vh;
+  }
 }
 @media (max-width: 768px) {
   .Landing-container .hero {
@@ -210,7 +213,7 @@
   cursor: pointer;
   margin: 2rem 1rem;
   max-width: 24rem;
-  height: 15rem;
+  height: 12rem;
   border-radius: 8px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -229,6 +232,11 @@
   .Landing-container .third-section {
     height: max-content;
   }
+  .Landing-container .third-section .event-container .card-container {
+    min-width: 18rem;
+    height: 9rem;
+    background-position: bottom;
+  }
 }
 @media (max-width: 768px) {
   .Landing-container .third-section div {
@@ -246,8 +254,8 @@
     font-size: 1.1rem;
   }
   .Landing-container .third-section .event-container .card-container {
-    min-width: 20rem;
-    height: 10rem;
+    min-width: 15rem;
+    height: 7.5rem;
     background-position: bottom;
   }
 }
