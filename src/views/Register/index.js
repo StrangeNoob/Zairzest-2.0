@@ -2,64 +2,13 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  getIdToken,
-  onAuthStateChanged,
-} from "firebase/auth";
-import { useCookies } from "react-cookie";
-
 const Register = () => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
-  const auth = getAuth();
-  const gooogleProvider = new GoogleAuthProvider();
-  const [cookies, setCookie, removeCookie] = useCookies(["user-token"]);
-
-  const signUpUserButtonHandler = () => {
-    if (password === confirmPassword) {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((response) => {
-          console.log("Register Successfull!");
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
-    } else {
-      console.log("Passwords don't match");
-    }
-  };
-
-  const signInWithGoogle = () => {
-    signInWithPopup(auth, gooogleProvider)
-      .then((response) => {
-        console.log("Register Successfull!");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const userToken = await getIdToken(user);
-      // console.log(token);
-      setCookie("User_Token", userToken);
-    }
-  });
-
-  console.log(cookies.User_Token);
-
   return (
     <div className="h-screen w-screen md:flex items-center bg-regalblue ">
-      <div className="flex-1 bg-regalblue pl-8 md:pl-28 md:pr-0 ">
+      <div className="hidden md:flex md:flex-col md:flex-1 bg-regalblue pl-8 md:pl-28 md:pr-0 ">
         <h1 className="font-bold text-white text-3xl md:text-6xl mb-12 tracking-wide">
           Experience the
           <br />
@@ -85,22 +34,13 @@ const Register = () => {
           <div className="rounded-lg border-2 border-stone-400 w-full p-1 mb-2">
             <input
               className="border-none focus:outline-none w-full h-full py-2 px-1 text-grayishfaint"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your Name"
-            />
-          </div>
-          <div className="rounded-lg border-2 border-stone-400 w-full p-1 mb-2">
-            <input
-              className="border-none focus:outline-none w-full h-full py-2 px-1 text-grayishfaint"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email here"
             />
           </div>
-          <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center mb-2">
+          <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center">
             <input
               className="border-none focus:outline-none text-grayishfaint w-full h-full py-2 px-1"
               type="password"
@@ -110,41 +50,16 @@ const Register = () => {
             />
             <AiOutlineEye size={24} color="#858585" />
           </div>
-          <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center">
-            <input
-              className="border-none focus:outline-none text-grayishfaint w-full h-full py-2 px-1"
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm Password"
-            />
-            <AiOutlineEye size={24} color="#858585" />
-          </div>
           <div>
             <p className="text-md text-grayishfaint mt-4">
-              Already a Member Yet ?{" "}
-              <span
-                className="text-deepPinkish font-md cursor-pointer"
-                onClick={() => navigate("/login")}
-              >
-                Sign In
-              </span>
+              Already a Member Yet ? <span className="text-deepPinkish font-md cursor-pointer" onClick={()=>navigate('/login')}>Sign In</span>
             </p>
           </div>
           <div className="flex mt-4 justify-between items-center flex flex-col md:flex-row">
-            <button
-              className="bg-buttonColor text-white text-md px-12  py-2 rounded-md border-none w-full md:w-fit"
-              onClick={signUpUserButtonHandler}
-            >
-              Sign Up
-            </button>
+            <button className="bg-buttonColor text-white text-md px-12  py-2 rounded-md border-none w-full md:w-fit">Sign Up</button>
             <span className="text-grayishfaint">or</span>
-            <button
-              className="bg-white border-2 border-gray-800 rounded-md px-8 py-2 font-medium flex items-center justify-center text-md w-full md:w-fit"
-              onClick={signInWithGoogle}
-            >
-              Sign Up with
-              <FcGoogle className="ml-2" />
+            <button className="bg-white border-2 border-gray-800 rounded-md px-8 py-2 font-medium flex items-center justify-center text-md w-full md:w-fit ">
+              Sign Up with<FcGoogle className="ml-2"/>
             </button>
           </div>
         </div>
