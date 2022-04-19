@@ -20,10 +20,14 @@ import { async } from "@firebase/util";
 import { config } from "../../config"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import "../../styles/events.css"
+import Sidebar from "../../components/Sidebar";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSidebar, setIsSidebar] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
   const auth = getAuth();
@@ -31,6 +35,10 @@ const SignUp = () => {
   const [cookies, setCookie] = useCookies(["userToken"]);
 
   const signUpUserButtonHandler = () => {
+    if(!password || !confirmPassword || !email){
+      toast.error("Please enter all the fields to sign up");
+      return;
+    }
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((response) => {
@@ -81,10 +89,20 @@ const SignUp = () => {
       });
   }
 
-  return (
+  return isSidebar ? (
+    <Sidebar
+      handleSidebar={() => {
+        setIsSidebar(false);
+      }}
+      aboutUs={false}
+    />
+  ) : (
+    <>
+  <Navbar aboutUs={false} handleSidebar={() => setIsSidebar(true)} />
+  <div className="nav-background"></div>
     <div className="h-screen w-screen md:flex items-center sign-up-container">
       <ToastContainer />
-      <div className="flex-1  pl-8 md:pl-28 md:pr-0 ">
+      <div className="hidden md:flex md:flex-col md:flex-1  pl-8 md:pl-28 md:pr-0 ">
         <h1 className="font-bold text-white text-3xl md:text-6xl mb-12 tracking-wide">
           Experience the
           <br />
@@ -164,6 +182,8 @@ const SignUp = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

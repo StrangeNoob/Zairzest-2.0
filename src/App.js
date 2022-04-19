@@ -32,7 +32,7 @@ function App() {
         <Route path="tech" element={<TechEvents />} />
         <Route path="fun" element={<FunEvents />} />
         <Route path="workshop" element={<WorkshopEvents />} />
-        <Route path="comingsoon" element={<ComingSoon />} />
+        {/* <Route path="comingsoon" element={<ComingSoon />} /> */}
         <Route path="user" element={<RegisterSuccess />} />
       </Routes>
     </div>

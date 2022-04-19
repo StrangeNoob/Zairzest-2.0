@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import { funEvents } from '../../utils/events'
 import "../../styles/events.css"
+import Sidebar from '../../components/Sidebar'
 const TechEvents = () => {
-    return (
+    const [isSidebar, setIsSidebar] = useState(false);
+    return isSidebar ? (
+        <Sidebar
+          handleSidebar={() => {
+            setIsSidebar(false);
+          }}
+          aboutUs={false}
+        />
+      ) : (
         <>
-            <Navbar aboutUs={false} />
+          <Navbar aboutUs={false} handleSidebar={() => setIsSidebar(true)} />
             <div className="nav-background"></div>
             <div className='events-container'>
                 {funEvents.map((event) => {

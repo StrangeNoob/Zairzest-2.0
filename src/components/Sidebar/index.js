@@ -29,7 +29,7 @@ const Sidebar = ({ scrollToZen, handleSidebar }) => {
           className="text-white font-medium text-xl mb-8 w-full py-4 hover:bg-"
           onClick={() => {
               handleSidebar();
-              navigate("/Comingsoon");
+              navigate("/signup");
           }}
         >
           Register
@@ -38,7 +38,7 @@ const Sidebar = ({ scrollToZen, handleSidebar }) => {
           className="text-white font-medium text-xl w-full py-4 hover:bg-pinkPallete"
           onClick={() => {
               handleSidebar();
-              navigate("/Comingsoon");
+              navigate("/login");
           }}
         >
           Sign In

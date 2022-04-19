@@ -15,16 +15,24 @@ import { config } from "../../config";
 import { toast, ToastContainer } from "react-toastify";
 import "../../styles/signup.css"
 import logo from "../../assets/logo.png"
-
+import Sidebar from "../../components/Sidebar";
+import Navbar from "../../components/Navbar";
+import "../../styles/events.css"
+import Footer from "../../components/Footer";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSidebar, setIsSidebar] = useState(false);
   const navigate = useNavigate();
   const auth = getAuth();
   const gooogleProvider = new GoogleAuthProvider();
   const [cookies, setCookie, removeCookie] = useCookies(["user-token"]);
 
   const loginUserButtonHandler = () => {
+    if(!email || !password){
+      toast.error("Please all the fields to login");
+      return;
+    }
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
         console.log("Login Successfull!");
@@ -70,12 +78,22 @@ const Login = () => {
       .catch((err) => {
         toast.error(err.response.data.message);
       });
-  }
-
-  return (
+    }
+    
+  return isSidebar ? (
+      <Sidebar
+        handleSidebar={() => {
+          setIsSidebar(false);
+        }}
+        aboutUs={false}
+      />
+    ) : (
+      <>
+    <Navbar aboutUs={false} handleSidebar={() => setIsSidebar(true)} />
+    <div className="nav-background"></div>
     <div className="h-screen w-screen md:flex items-center login-container">
        <ToastContainer />
-      <Link to="/"><img src={logo} alt="" style={{ position: "fixed", top: "3rem", width: "17rem", height: "2rem", left: "7rem" }} /></Link>
+      {/* <Link to="/"><img src={logo} alt="" style={{ position: "fixed", top: "3rem", width: "17rem", height: "2rem", left: "7rem" }} /></Link> */}
       <div className="hidden md:flex md:flex-col md:flex-1 left-section pl-8 md:pl-28 md:pr-0 ">
         <h1 className="font-bold text-white text-3xl md:text-6xl mb-12">
           Experience the
@@ -118,13 +136,13 @@ const Login = () => {
             />
           </div>
           <div>
-            <p className="text-md text-grayishfaint mt-4">
+            {/* <p className="text-md text-grayishfaint mt-4">
               Don't remember Password ?{" "}
               <span className="text-deepPinkish font-md cursor-pointer">
                 Reset Password
               </span>
-            </p>
-            <p className="text-md text-grayishfaint">
+            </p> */}
+            <p className="text-md text-grayishfaint mb-8">
               Not a Member Yet ?{" "}
               <span
                 className="text-deepPinkish font-md cursor-pointer"
@@ -153,6 +171,8 @@ const Login = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 
