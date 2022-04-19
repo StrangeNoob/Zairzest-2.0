@@ -5,6 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
+import { config } from "../../config";
+
 import axios from "axios";
 
 function RegisterUser() {
@@ -47,7 +49,7 @@ function RegisterUser() {
 
   function register(userData) {
     axios
-      .post("http://localhost:3001/auth/register", userData, {
+      .post(`${config.BASE_URL}/auth/register`, userData, {
         headers: {
           Authorization: cookies.userToken,
         },
