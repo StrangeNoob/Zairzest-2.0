@@ -12,6 +12,7 @@ import WorkshopEvents from './views/Events/WorkshopEvents';
 import ComingSoon from './views/ComingSoon';
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import RegisterSuccess from "./views/RegisterSuccess";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="fun" element={<FunEvents />} />
         <Route path="workshop" element={<WorkshopEvents />} />
         <Route path="comingsoon" element={<ComingSoon />} />
+        <Route path="user" element={<RegisterSuccess />} />
       </Routes>
     </div>
   );

@@ -10,6 +10,9 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useCookies } from "react-cookie";
+import axios from "axios";
+import { config } from "../../config";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,6 +27,7 @@ const Login = () => {
       .then((response) => {
         console.log("Login Successfull!");
         console.log(response);
+        auth.currentUser.getIdToken().then((res) => signIn(res));
       })
       .catch((error) => {
         console.log(error.message);
@@ -34,11 +38,38 @@ const Login = () => {
     signInWithPopup(auth, gooogleProvider)
       .then((response) => {
         console.log("Register Successfull!");
+        auth.currentUser.getIdToken().then((res) => signIn(res));
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
+
+  function signIn(userToken) {
+    axios
+      .get(`${config.BASE_URL}/auth/signin`, {
+        headers: {
+          Authorization: userToken,
+        },
+      })
+      .then((res) => {
+        if (res.data.status === 200 || res.data.status === 201) {
+          toast.success(res.data.message);
+          setCookie("userToken", res.data.token);
+          if(res.data.data.isVerified){
+            navigate("/user",{ state : res.data.data})
+          }else{
+            navigate("/register", { state: res.data.data });
+          }
+        } else {
+          toast.error("Some error occured");
+        }
+      })
+      .catch((err) => {
+        console.log(err.response.data.data);
+        toast.error(err.response.data.message);
+      });
+  }
 
   return (
     <div className="h-screen w-screen md:flex items-center bg-regalblue ">

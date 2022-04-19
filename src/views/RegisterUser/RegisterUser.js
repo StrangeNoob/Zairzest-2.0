@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 
 import { config } from "../../config";
 
@@ -58,7 +57,7 @@ function RegisterUser() {
         if (res.data.status === 200 || res.data.status === 201) {
           toast.success(res.data.message);
           console.log(res.data.data);
-          // navigate("/register", { state: res.data.data });
+          navigate("/user", { state : res.data.data });
         } else {
           toast.error("Some error occured");
         }
