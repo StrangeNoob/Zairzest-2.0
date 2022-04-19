@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 
 import { Link, useNavigate } from "react-router-dom";
