@@ -4,6 +4,9 @@ import { AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 
+import { Link, useNavigate } from "react-router-dom";
+import "../../styles/signup.css";
+import "../../assets/logo.png";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -91,9 +94,9 @@ const SignUp = () => {
   }
 
   return (
-    <div className="h-screen w-screen md:flex items-center bg-regalblue ">
+    <div className="h-screen w-screen md:flex items-center sign-up-container">
       <ToastContainer />
-      <div className="flex-1 bg-regalblue pl-8 md:pl-28 md:pr-0 ">
+      <div className="flex-1  pl-8 md:pl-28 md:pr-0 ">
         <h1 className="font-bold text-white text-3xl md:text-6xl mb-12 tracking-wide">
           Experience the
           <br />
@@ -108,7 +111,7 @@ const SignUp = () => {
           <br /> Zairza.
         </p>
       </div>
-      <div className="px-4 md:px-0 md:w-1/3 h-full grid place-items-center bg-white">
+      <div className="px-12 md:px-0 md:w-2/5 h-full grid place-items-center bg-white">
         <div>
           <h2 className="text-regalbluefont text-4xl font-medium mb-2">
             Experience the Future Tech
@@ -133,7 +136,6 @@ const SignUp = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
             />
-            <AiOutlineEye size={24} color="#858585" />
           </div>
           <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center">
             <input
@@ -143,7 +145,6 @@ const SignUp = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm Password"
             />
-            <AiOutlineEye size={24} color="#858585" />
           </div>
           <div>
             <p className="text-md text-grayishfaint mt-4">
@@ -158,7 +159,7 @@ const SignUp = () => {
           </div>
           <div className="flex mt-4 justify-between items-center flex flex-col md:flex-row">
             <button
-              className="bg-buttonColor text-white text-md px-12  py-2 rounded-md border-none w-full md:w-fit"
+              className="bg-buttonColor text-white text-md px-12  py-3 rounded-md border-none w-full md:w-fit"
               onClick={signUpUserButtonHandler}
             >
               {isLoading ? (

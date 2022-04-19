@@ -1,7 +1,7 @@
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import "../../styles/landing.css";
-import VR from "../../assets/VR-MAN.png";
+import VR from "../../assets/VR-man.webp";
 import Mascot from "../../assets/mascot.png";
 import { useNavigate } from "react-router-dom";
 import useWindowDimensions from "../../CustomHooks/windowDimension";
@@ -17,13 +17,10 @@ const Landing = () => {
   };
   return isSidebar ? (
     <Sidebar
-      scrollToZen={() => 
-        scrollToZen()
-      }
-      handleSidebar={() =>{
-        setIsSidebar(false)
-      }
-      }
+      scrollToZen={() => scrollToZen()}
+      handleSidebar={() => {
+        setIsSidebar(false);
+      }}
     />
   ) : (
     <div className="Landing-container">
@@ -33,7 +30,8 @@ const Landing = () => {
         }}
         aboutUs={true}
         handleSidebar={() => {
-          setIsSidebar(true);}}
+          setIsSidebar(true);
+        }}
       />
       <div className="hero">
         <div className="hero-content">
