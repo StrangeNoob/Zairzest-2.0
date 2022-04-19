@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -10,6 +10,8 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useCookies } from "react-cookie";
+import "../../styles/signup.css"
+import logo from "../../assets/logo.png"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -41,7 +43,8 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen w-screen md:flex items-center bg-regalblue ">
+    <div className="h-screen w-screen md:flex items-center login-container">
+      <Link to="/"><img src={logo} alt="" style={{ position: "fixed", top: "3rem", width: "17rem", height: "2rem", left: "7rem" }} /></Link>
       <div className="hidden md:flex md:flex-col md:flex-1 left-section pl-8 md:pl-28 md:pr-0 ">
         <h1 className="font-bold text-white text-3xl md:text-6xl mb-12">
           Experience the
@@ -82,7 +85,6 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
             />
-            <AiOutlineEye size={24} color="#858585" />
           </div>
           <div>
             <p className="text-md text-grayishfaint mt-4">
@@ -103,7 +105,7 @@ const Login = () => {
           </div>
           <div className="flex mt-4 justify-between items-center flex-col md:flex-row">
             <button
-              className="bg-buttonColor text-white text-md px-12  py-2 rounded-md border-none w-full md:w-fit"
+              className="bg-buttonColor text-white text-md px-12  py-3 rounded-md border-none w-full md:w-fit"
               onClick={loginUserButtonHandler}
             >
               Login
