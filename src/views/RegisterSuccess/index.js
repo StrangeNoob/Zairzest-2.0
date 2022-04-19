@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation , useNavigate } from "react-router-dom";
-
+import "../../styles/signup.css"
 const RegisterSuccess = () => {
     const {state} = useLocation();
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ const RegisterSuccess = () => {
     },[])
 
   return (
-    <div className="h-screen w-screen md:flex items-center bg-regalblue ">
+    <div className="h-screen w-screen md:flex items-center bg-regalblue register-success">
       <div className="hidden md:flex md:flex-col md:flex-1 left-section pl-8 md:pl-28 md:pr-0 ">
         <h1 className="font-bold text-white text-3xl md:text-6xl mb-12">
           Experience the
@@ -36,11 +36,10 @@ const RegisterSuccess = () => {
             <br />
             successfully
           </h1>
-          <p className="text-grayishfaint tracking-wide font-medium text-md mb-8">Sign In to get into Zairzest</p>
-          <p className="text-grayishfaint tracking-wide font-medium text-md">Your ZEN Code is:</p>
+          <p className="text-grayishfaint tracking-wide font-medium text-md mt-10">Your ZEN Code is:</p>
           <p className="text-regalbluefont text-2xl font-medium mb-2">{state && state.zid}</p>
           <br/>
-          <p className="text-grayishfaint text-lg mb-8 font-medium">Show this code in every event to verify</p>
+          <p className="text-grayishfaint text-lg mb-8 font-medium">Show the Zen Code to get your Zen Card<br/> by paying Rs 50/- in Zairza to complete the registration.</p>
         </div>
       </div>
     </div>

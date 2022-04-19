@@ -28,14 +28,16 @@
   color: white;
 }
 @media (max-width: 768px) {
-  .navbar-container{
-    padding:1rem 1rem !important;
-  }
   .navbar-container .img-container img {
     width: 10rem;
     height: 1.2rem;
   }
   .navbar-container .menu-container button {
     padding: 0 1rem;
+  }
+}
+@media (max-width: 426px) {
+  .navbar-container {
+    display: none;
   }
 }
