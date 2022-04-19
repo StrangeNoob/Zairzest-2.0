@@ -47,8 +47,8 @@ const Navbar = ({scrollToZen, aboutUs,handleSidebar}) => {
           ) : (
             ""
           )}
-          <button onClick={() => navigate("/ComingSoon")}>Register</button>
-          <button onClick={() => navigate("/ComingSoon")}>Sign In</button>
+          <button onClick={() => navigate("/signup")}>Register</button>
+          <button onClick={() => navigate("/login")}>Sign In</button>
        </div>:
         <div>
           <GiHamburgerMenu color="#fff" size={30} onClick={handleSidebar}/>

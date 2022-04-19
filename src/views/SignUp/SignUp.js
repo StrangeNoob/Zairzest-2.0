@@ -8,42 +8,83 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  getIdToken,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { useCookies } from "react-cookie";
+import axios from "axios";
+import { useEffect } from "react";
+import { async } from "@firebase/util";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Login = () => {
+const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
   const auth = getAuth();
   const gooogleProvider = new GoogleAuthProvider();
-  const [cookies, setCookie, removeCookie] = useCookies(["user-token"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
 
-  const loginUserButtonHandler = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((response) => {
-        console.log("Login Successfull!");
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+  const signUpUserButtonHandler = () => {
+    if (password === confirmPassword) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((response) => {
+          console.log("Register Successfull!");
+          // console.log(response);
+          auth.currentUser.getIdToken().then((res) => signUp(res));
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
+    } else {
+      toast.error("Passwords don't match");
+    }
   };
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, gooogleProvider)
       .then((response) => {
         console.log("Register Successfull!");
+        console.log(response);
+        auth.currentUser.getIdToken().then((res) => signUp(res));
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
 
+
+  async function signUp(userToken) {
+    axios
+      .get("https://zairzest-2.herokuapp.com/auth/signup", {
+        headers: {
+          Authorization: userToken,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.status === 200 || res.data.status === 201) {
+          toast.success(res.data.message);
+          console.log(res.data.data);
+          setCookie("userToken", res.data.token);
+
+        } else {
+          toast.error("Some error occured");
+        }
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+        toast.error(err.response.data.message);
+      });
+  }
+
   return (
     <div className="h-screen w-screen md:flex items-center bg-regalblue ">
-      <div className="hidden md:flex md:flex-col md:flex-1 left-section pl-8 md:pl-28 md:pr-0 ">
-        <h1 className="font-bold text-white text-3xl md:text-6xl mb-12">
+      <ToastContainer />
+      <div className="flex-1 bg-regalblue pl-8 md:pl-28 md:pr-0 ">
+        <h1 className="font-bold text-white text-3xl md:text-6xl mb-12 tracking-wide">
           Experience the
           <br />
           Future Tech with
@@ -63,7 +104,7 @@ const Login = () => {
             Experience the Future Tech
           </h2>
           <p className="text-grayishfaint text-md mb-8">
-            Sign In to get into Zairzest
+            Register for Zairzest 2.0
           </p>
           <div className="rounded-lg border-2 border-stone-400 w-full p-1 mb-2">
             <input
@@ -74,7 +115,7 @@ const Login = () => {
               placeholder="Email here"
             />
           </div>
-          <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center">
+          <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center mb-2">
             <input
               className="border-none focus:outline-none text-grayishfaint w-full h-full py-2 px-1"
               type="password"
@@ -84,36 +125,40 @@ const Login = () => {
             />
             <AiOutlineEye size={24} color="#858585" />
           </div>
+          <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center">
+            <input
+              className="border-none focus:outline-none text-grayishfaint w-full h-full py-2 px-1"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm Password"
+            />
+            <AiOutlineEye size={24} color="#858585" />
+          </div>
           <div>
             <p className="text-md text-grayishfaint mt-4">
-              Don't remember Password ?{" "}
-              <span className="text-deepPinkish font-md cursor-pointer">
-                Reset Password
-              </span>
-            </p>
-            <p className="text-md text-grayishfaint">
-              Not a Member Yet ?{" "}
+              Already a Member Yet ?{" "}
               <span
                 className="text-deepPinkish font-md cursor-pointer"
-                onClick={() => navigate("/signup")}
+                onClick={() => navigate("/login")}
               >
-                Sign Up
+                Sign In
               </span>
             </p>
           </div>
-          <div className="flex mt-4 justify-between items-center flex-col md:flex-row">
+          <div className="flex mt-4 justify-between items-center flex flex-col md:flex-row">
             <button
               className="bg-buttonColor text-white text-md px-12  py-2 rounded-md border-none w-full md:w-fit"
-              onClick={loginUserButtonHandler}
+              onClick={signUpUserButtonHandler}
             >
-              Login
+              Sign Up
             </button>
             <span className="text-grayishfaint">or</span>
             <button
               className="bg-white border-2 border-gray-800 rounded-md px-8 py-2 font-medium flex items-center justify-center text-md w-full md:w-fit"
               onClick={signInWithGoogle}
             >
-              Sign in with
+              Sign Up with
               <FcGoogle className="ml-2" />
             </button>
           </div>
@@ -123,4 +168,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
