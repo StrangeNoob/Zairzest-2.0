@@ -10,6 +10,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useCookies } from "react-cookie";
+import { Oval } from "react-loader-spinner";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,24 +19,34 @@ const Login = () => {
   const auth = getAuth();
   const gooogleProvider = new GoogleAuthProvider();
   const [cookies, setCookie, removeCookie] = useCookies(["user-token"]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingOauth, setIsLoadingOauth] = useState(false);
 
   const loginUserButtonHandler = () => {
+    setIsLoading(true);
+
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
         console.log("Login Successfull!");
         console.log(response);
+        setIsLoading(false);
       })
       .catch((error) => {
+        setIsLoading(false);
         console.log(error.message);
       });
   };
 
   const signInWithGoogle = () => {
+    setIsLoadingOauth(true);
+
     signInWithPopup(auth, gooogleProvider)
       .then((response) => {
         console.log("Register Successfull!");
+        setIsLoadingOauth(false);
       })
       .catch((error) => {
+        setIsLoadingOauth(false);
         console.log(error.message);
       });
   };
@@ -106,15 +117,47 @@ const Login = () => {
               className="bg-buttonColor text-white text-md px-12  py-2 rounded-md border-none w-full md:w-fit"
               onClick={loginUserButtonHandler}
             >
-              Login
+              {isLoading ? (
+                <Oval
+                  ariaLabel="loading-indicator"
+                  height={20}
+                  width={20}
+                  strokeWidth={20}
+                  strokeWidthSecondary={5}
+                  color="#858585"
+                  secondaryColor="#01265D"
+                />
+              ) : (
+                <span>Login</span>
+              )}
             </button>
             <span className="text-grayishfaint">or</span>
             <button
               className="bg-white border-2 border-gray-800 rounded-md px-8 py-2 font-medium flex items-center justify-center text-md w-full md:w-fit"
               onClick={signInWithGoogle}
             >
-              Sign in with
-              <FcGoogle className="ml-2" />
+              {isLoadingOauth ? (
+                <Oval
+                  ariaLabel="loading-indicator"
+                  height={20}
+                  width={20}
+                  strokeWidth={20}
+                  strokeWidthSecondary={5}
+                  color="#000"
+                  secondaryColor="#fff"
+                />
+              ) : (
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  Sign in with
+                  <FcGoogle className="ml-2" />
+                </span>
+              )}
             </button>
           </div>
         </div>
