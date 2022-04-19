@@ -1,0 +1,45 @@
+.navbar-container {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.5rem 6rem;
+  transition: all linear 0.2s;
+  .img-container {
+    img {
+      width: 17rem;
+      height: 2rem;
+      @media (max-width: 1024px) {
+        width: 13rem;
+        height: 1.5rem;
+      }
+    }
+  }
+  .menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+      padding: 0 3.5rem;
+      font-size: 1.2rem;
+      color: white;
+    }
+  }
+  @media (max-width: 768px) {
+    .img-container {
+      img {
+        width: 10rem;
+        height: 1.2rem;
+      }
+    }
+    .menu-container {
+      button {
+        padding: 0 1rem;
+      }
+    }
+  }
+  @media (max-width: 426px) {
+    display: none;
+  }
+}

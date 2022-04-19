@@ -55,13 +55,6 @@ const SignUp = () => {
       });
   };
 
-  // onAuthStateChanged(auth, async (user) => {
-  //   if (user) {
-  //     const userToken = await getIdToken(user);
-  //     console.log(userToken);
-  //     setCookie("userToken", userToken);
-  //   }
-  // });
 
   async function signUp(userToken) {
     axios
@@ -72,9 +65,11 @@ const SignUp = () => {
       })
       .then((res) => {
         console.log(res.data);
-        if (res.data.status == 200 || res.data.status == 201) {
+        if (res.data.status === 200 || res.data.status === 201) {
           toast.success(res.data.message);
+          console.log(res.data.data);
           setCookie("userToken", res.data.token);
+
         } else {
           toast.error("Some error occured");
         }

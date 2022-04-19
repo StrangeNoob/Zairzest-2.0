@@ -42,7 +42,7 @@ const Login = () => {
 
   return (
     <div className="h-screen w-screen md:flex items-center bg-regalblue ">
-      <div className="flex-1 bg-regalblue pl-8 md:pl-28 md:pr-0 ">
+      <div className="hidden md:flex md:flex-col md:flex-1 left-section pl-8 md:pl-28 md:pr-0 ">
         <h1 className="font-bold text-white text-3xl md:text-6xl mb-12">
           Experience the
           <br />
