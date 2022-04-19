@@ -50,3 +50,18 @@
 .react-responsive-modal-modal .container .text-container h2 {
   margin-bottom: 2rem;
 }
+@media (max-width: 426px) {
+  .react-responsive-modal-modal {
+    height: max-content;
+  }
+  .react-responsive-modal-modal .container {
+    flex-direction: column;
+  }
+  .react-responsive-modal-modal .container .image-container {
+    height: 60%;
+  }
+  .react-responsive-modal-modal .container .image-container img {
+    margin-top: 2rem;
+    height: 100%;
+  }
+}
