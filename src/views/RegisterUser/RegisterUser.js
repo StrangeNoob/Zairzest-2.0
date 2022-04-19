@@ -74,6 +74,7 @@ function RegisterUser() {
 
   return (
     <div className="h-screen w-screen md:flex items-center sign-up-container">
+      <ToastContainer />
       <div className="flex-1  pl-8 md:pl-28 md:pr-0 ">
         <h1 className="font-bold text-white text-3xl md:text-6xl mb-12 tracking-wide">
           Experience the
