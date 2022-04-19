@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineEye } from "react-icons/ai";
+import { Oval } from "react-loader-spinner";
+
 import { Link, useNavigate } from "react-router-dom";
-import "../../styles/signup.css"
-import "../../assets/logo.png"
+import "../../styles/signup.css";
+import "../../assets/logo.png";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -17,7 +19,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useEffect } from "react";
 import { async } from "@firebase/util";
-import { config } from "../../config"
+import { config } from "../../config";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -29,17 +31,23 @@ const SignUp = () => {
   const auth = getAuth();
   const gooogleProvider = new GoogleAuthProvider();
   const [cookies, setCookie] = useCookies(["userToken"]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingOauth, setIsLoadingOauth] = useState(false);
 
   const signUpUserButtonHandler = () => {
+    setIsLoading(true);
+
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((response) => {
           console.log("Register Successfull!");
           // console.log(response);
           auth.currentUser.getIdToken().then((res) => signUp(res));
+          setIsLoading(false);
         })
         .catch((error) => {
           toast.error(error.message);
+          setIsLoading(false);
         });
     } else {
       toast.error("Passwords don't match");
@@ -47,6 +55,8 @@ const SignUp = () => {
   };
 
   const signInWithGoogle = () => {
+    setIsLoadingOauth(true);
+
     signInWithPopup(auth, gooogleProvider)
       .then((response) => {
         console.log("Register Successfull!");
@@ -55,6 +65,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        setIsLoadingOauth(false);
       });
   };
 
@@ -150,15 +161,47 @@ const SignUp = () => {
               className="bg-buttonColor text-white text-md px-12  py-3 rounded-md border-none w-full md:w-fit"
               onClick={signUpUserButtonHandler}
             >
-              Sign Up
+              {isLoading ? (
+                <Oval
+                  ariaLabel="loading-indicator"
+                  height={20}
+                  width={20}
+                  strokeWidth={20}
+                  strokeWidthSecondary={5}
+                  color="#858585"
+                  secondaryColor="#01265D"
+                />
+              ) : (
+                <span>Sign Up</span>
+              )}
             </button>
             <span className="text-grayishfaint">or</span>
             <button
               className="bg-white border-2 border-gray-800 rounded-md px-8 py-2 font-medium flex items-center justify-center text-md w-full md:w-fit"
               onClick={signInWithGoogle}
             >
-              Sign Up with
-              <FcGoogle className="ml-2" />
+              {isLoadingOauth ? (
+                <Oval
+                  ariaLabel="loading-indicator"
+                  height={20}
+                  width={20}
+                  strokeWidth={20}
+                  strokeWidthSecondary={5}
+                  color="#000"
+                  secondaryColor="#fff"
+                />
+              ) : (
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  Sign Up with
+                  <FcGoogle className="ml-2" />
+                </span>
+              )}
             </button>
           </div>
         </div>
