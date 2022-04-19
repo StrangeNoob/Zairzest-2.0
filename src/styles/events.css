@@ -19,3 +19,10 @@
   align-items: center;
   justify-content: center;
 }
+
+.eventOverlay {
+  background: rgba(36, 123, 160, 0.7);
+}
+.eventModal {
+  border-radius: 0.3rem;
+}
