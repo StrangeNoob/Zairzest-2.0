@@ -1,9 +1,23 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 
 function RegisterUser() {
-  const [userData, setUserData] = useState({});
+  const { state } = useLocation();
+  const navigate = useNavigate();
+  const [cookies] = useCookies(["userToken"]);
+
+  const [userData, setUserData] = useState({
+    name: state.name ?? "",
+  });
 
   const branches = [
+    "SELECT BRANCH",
     "Computer Science & Engineering",
     "Information Technology",
     "Electrical Engineering",
@@ -28,7 +42,30 @@ function RegisterUser() {
 
   const clickHandler = () => {
     console.log(userData);
+    register(userData);
   };
+
+  function register(userData) {
+    axios
+      .post("http://localhost:3001/auth/register", userData, {
+        headers: {
+          Authorization: cookies.userToken,
+        },
+      })
+      .then((res) => {
+        if (res.data.status === 200 || res.data.status === 201) {
+          toast.success(res.data.message);
+          console.log(res.data.data);
+          // navigate("/register", { state: res.data.data });
+        } else {
+          toast.error("Some error occured");
+        }
+      })
+      .catch((err) => {
+        console.log(err.response.data.data);
+        toast.error(err.response.data.message);
+      });
+  }
 
   return (
     <div>
@@ -47,7 +84,7 @@ function RegisterUser() {
               name="name"
               onChange={(e) => userInputHandler(e)}
               placeholder="Name"
-              defaultValue=""
+              defaultValue={state.name ?? ""}
             />
           </div>
           <div className="rounded-lg border-2 border-stone-400 w-full p-1 mb-2 bg-gray-200">
@@ -57,6 +94,7 @@ function RegisterUser() {
               name="email"
               onChange={(e) => userInputHandler(e)}
               placeholder="Email here"
+              value={state.email}
               disabled
             />
           </div>
@@ -80,7 +118,7 @@ function RegisterUser() {
             <input
               className="border-none focus:outline-none w-full h-full py-2 px-1 text-grayishfaint"
               type="number"
-              name="regdNo"
+              name="regNo"
               onChange={(e) => userInputHandler(e)}
               placeholder="Registration Number"
               defaultValue=""
@@ -90,7 +128,7 @@ function RegisterUser() {
             <input
               className="border-none focus:outline-none w-full h-full py-2 px-1 text-grayishfaint"
               type="number"
-              name="phoneNo"
+              name="phone"
               onChange={(e) => userInputHandler(e)}
               placeholder="Phone Number"
               defaultValue=""
