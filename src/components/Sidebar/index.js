@@ -20,7 +20,7 @@ const Sidebar = ({ scrollToZen, handleSidebar }) => {
           className="text-white font-medium text-xl mb-8 w-full py-4 hover:bg-"
           onClick={() => {
             handleSidebar()
-            scrollToZen();
+            navigate("/")
           }}
         >
           About Us

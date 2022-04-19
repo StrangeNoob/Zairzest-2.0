@@ -19,6 +19,9 @@ import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
 import "../../styles/events.css"
 import Footer from "../../components/Footer";
+import { Oval } from "react-loader-spinner";
+
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,32 +30,41 @@ const Login = () => {
   const auth = getAuth();
   const gooogleProvider = new GoogleAuthProvider();
   const [cookies, setCookie, removeCookie] = useCookies(["user-token"]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingOauth, setIsLoadingOauth] = useState(false);
 
   const loginUserButtonHandler = () => {
     if(!email || !password){
       toast.error("Please all the fields to login");
       return;
     }
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
         console.log("Login Successfull!");
         console.log(response);
+        setIsLoading(false);
         auth.currentUser.getIdToken().then((res) => signIn(res));
       })
       .catch((error) => {
        toast.error(error.message)
-      });
+        setIsLoading(false);
+      })
   };
 
   const signInWithGoogle = () => {
+    setIsLoadingOauth(true);
+
     signInWithPopup(auth, gooogleProvider)
       .then((response) => {
         console.log("Register Successfull!");
+        setIsLoadingOauth(false);
         auth.currentUser.getIdToken().then((res) => signIn(res));
       })
       .catch((error) => {
         toast.error(error.message)
-      });
+        setIsLoadingOauth(false);
+      })
   };
 
   function signIn(userToken) {
@@ -124,6 +136,7 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email here"
+              required
             />
           </div>
           <div className="rounded-lg border-2 border-stone-400 w-full p-1 flex items-center">
@@ -133,6 +146,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
+              required
             />
           </div>
           <div>
@@ -157,15 +171,47 @@ const Login = () => {
               className="bg-buttonColor text-white text-md px-12  py-3 rounded-md border-none w-full md:w-fit"
               onClick={loginUserButtonHandler}
             >
-              Login
+              {isLoading ? (
+                <Oval
+                  ariaLabel="loading-indicator"
+                  height={20}
+                  width={20}
+                  strokeWidth={20}
+                  strokeWidthSecondary={5}
+                  color="#858585"
+                  secondaryColor="#01265D"
+                />
+              ) : (
+                <span>Login</span>
+              )}
             </button>
             <span className="text-grayishfaint">or</span>
             <button
               className="bg-white border-2 border-gray-800 rounded-md px-8 py-2 font-medium flex items-center justify-center text-md w-full md:w-fit"
               onClick={signInWithGoogle}
             >
-              Sign in with
-              <FcGoogle className="ml-2" />
+              {isLoadingOauth ? (
+                <Oval
+                  ariaLabel="loading-indicator"
+                  height={20}
+                  width={20}
+                  strokeWidth={20}
+                  strokeWidthSecondary={5}
+                  color="#000"
+                  secondaryColor="#fff"
+                />
+              ) : (
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  Sign in with
+                  <FcGoogle className="ml-2" />
+                </span>
+              )}
             </button>
           </div>
         </div>

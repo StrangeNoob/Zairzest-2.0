@@ -10,6 +10,7 @@
   padding: 4rem 6rem 8rem 6rem;
 }
 .events-container .card-container {
+  cursor: pointer;
   min-height: 25rem;
   min-width: 20rem;
   margin: 2rem;
@@ -18,4 +19,49 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.react-responsive-modal-modal {
+  height: 60vh;
+  min-width: 70vw !important;
+  max-width: 120vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.react-responsive-modal-modal .container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+}
+.react-responsive-modal-modal .container .image-container {
+  height: 100%;
+  flex: 1;
+}
+.react-responsive-modal-modal .container .image-container img {
+  display: block;
+  height: 100%;
+}
+.react-responsive-modal-modal .container .text-container {
+  flex: 2;
+  padding: 2rem;
+  text-align: justify;
+}
+.react-responsive-modal-modal .container .text-container h2 {
+  margin-bottom: 2rem;
+}
+@media (max-width: 426px) {
+  .react-responsive-modal-modal {
+    height: max-content;
+  }
+  .react-responsive-modal-modal .container {
+    flex-direction: column;
+  }
+  .react-responsive-modal-modal .container .image-container {
+    height: 60%;
+  }
+  .react-responsive-modal-modal .container .image-container img {
+    margin-top: 2rem;
+    height: 100%;
+  }
 }
