@@ -48,15 +48,15 @@ const TechEvents = () => {
             modal: "eventModal",
           }}
         >
-          <div className="flex">
-            <div className="flex-1">
+          <div className="flex justify-center items-center container">
+            <div className="image-container">
               <img
                 src={modalData.imageURL}
                 alt=""
                 style={{ width: "19rem", height: "24rem" }}
               />
             </div>
-            <div className="flex flex-col justify-center flex-1">
+            <div className="flex flex-col justify-center items-center text-container">
               <h1 className="font-bold text-2xl">{modalData.name}</h1>
               <h2 className="font-bold text-xl text-stone-600">
                 {modalData.smallDescription}
