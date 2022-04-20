@@ -100,8 +100,9 @@ const Login = () => {
     />
   ) : (
     <>
-      <img src={logo} onClick={() => { navigate("/") }} style={{ position: "fixed", top: "2.5rem", left: "7rem", width: "16rem", height: "2rem", cursor: "pointer" }} />
-      <div className="nav-background"></div>
+      <div className="nav-background">
+        <img src={logo} alt="brand-logo" onClick={() => { navigate("/") }} style={{ position: "fixed", top: "2.5rem", left: "7rem", width: "16rem", height: "2rem", cursor: "pointer" }} />
+      </div>
       <div className="h-screen w-screen md:flex items-center login-container">
         <ToastContainer />
         <div className="hidden md:flex md:flex-col md:flex-1 left-section pl-8 md:pl-28 md:pr-0 ">

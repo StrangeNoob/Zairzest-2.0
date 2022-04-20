@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import useWindowDimensions from "../../CustomHooks/windowDimension";
 import Sidebar from "../../components/Sidebar";
 import { useState } from "react";
+
 const Landing = () => {
   const navigate = useNavigate();
   const { height, width } = useWindowDimensions();

@@ -1,7 +1,10 @@
 .nav-background {
   height: 6.7rem;
   background-color: #000;
+  position: sticky;
+  top: 0;
 }
+
 .events-container {
   display: flex;
   flex-wrap: wrap;

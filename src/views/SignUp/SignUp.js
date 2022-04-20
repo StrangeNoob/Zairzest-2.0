@@ -5,7 +5,7 @@ import { Oval } from "react-loader-spinner";
 
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/signup.css";
-import "../../assets/logo.png";
+import logo from "../../assets/logo.png";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -109,8 +109,9 @@ const SignUp = () => {
     />
   ) : (
     <>
-      <img src={logo} onClick={() => { navigate("/") }} style={{ position: "fixed", top: "2.5rem", left: "7rem", width: "16rem", height: "2rem", cursor: "pointer", margin: "0 auto" }} />
-      <div className="nav-background"></div>
+      <div className="nav-background">
+        <img src={logo} alt="brand-logo" onClick={() => { navigate("/") }} style={{ position: "fixed", top: "2.5rem", left: "7rem", width: "16rem", height: "2rem", cursor: "pointer", margin: "0 auto" }} />
+      </div>
       <div className="h-screen w-screen md:flex items-center sign-up-container">
         <ToastContainer />
         <div className="hidden md:flex md:flex-col md:flex-1  pl-8 md:pl-28 md:pr-0 ">
