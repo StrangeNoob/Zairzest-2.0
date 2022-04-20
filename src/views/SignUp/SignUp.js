@@ -109,7 +109,7 @@ const SignUp = () => {
     />
   ) : (
     <>
-      <Navbar aboutUs={false} handleSidebar={() => setIsSidebar(true)} />
+      <img src={logo} onClick={() => { navigate("/") }} style={{ position: "fixed", top: "2.5rem", left: "7rem", width: "16rem", height: "2rem", cursor: "pointer", margin: "0 auto" }} />
       <div className="nav-background"></div>
       <div className="h-screen w-screen md:flex items-center sign-up-container">
         <ToastContainer />
@@ -227,7 +227,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

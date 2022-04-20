@@ -16,10 +16,10 @@ const Navbar = ({ scrollToZen, aboutUs, handleSidebar }) => {
       var nav = document.getElementsByClassName("navbar-container")[0];
       if (show) {
         nav.style.backgroundColor = "rgba(0,0,0,0.7)";
-        nav.style.padding = "1.5rem 4rem";
+        // nav.style.padding = "1.5rem 4rem";
       } else {
         nav.style.backgroundColor = "transparent";
-        nav.style.padding = "2.5rem 4rem";
+        // nav.style.padding = "2.5rem 4rem";
       }
     };
     document.addEventListener("scroll", handleScroll);

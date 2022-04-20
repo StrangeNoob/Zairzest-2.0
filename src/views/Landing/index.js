@@ -40,7 +40,7 @@ const Landing = () => {
             Release all your stress with the exciting Tech and Fun events in the
             most awaited fest. Zairza 2.0 presented by Zairza.
           </p>
-          <button className="shadow-xl" onClick={() => navigate("/ComingSoon")}>
+          <button className="shadow-xl" onClick={() => navigate("/login")}>
             <p>Register Now</p>
           </button>
         </div>
