@@ -1,6 +1,11 @@
 .nav-background {
   height: 6.7rem;
   background-color: #000;
+  position: fixed;
+  width: 100%;
+  @media (max-width: 426px) {
+    height: 5rem;
+  }
 }
 .events-container {
   display: flex;
@@ -63,4 +68,10 @@
       }
     }
   }
+}
+
+.nav-logo-only {
+  width: 12rem;
+  padding-top: 2rem;
+  padding-left: 3rem;
 }
