@@ -78,6 +78,7 @@ const SignUp = () => {
   };
 
   function signUp(userToken) {
+    console.log("Singup ")
     axios
       .get(`${config.BASE_URL}/auth/signup`, {
         headers: {
