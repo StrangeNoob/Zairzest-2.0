@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import "../../styles/navbar.css";
 import zairzestLogo from "../../assets/logo.png";
-import { GiHamburgerMenu } from "react-icons/gi"
+import { GiHamburgerMenu } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import ham from "../../assets/menu.png";
 import useWindowDimensions from "../../CustomHooks/windowDimension";
 
-
-const Navbar = ({scrollToZen, aboutUs,handleSidebar}) => {
+const Navbar = ({ scrollToZen, aboutUs, handleSidebar }) => {
   const navigate = useNavigate();
-  const { width,height} = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,10 +16,10 @@ const Navbar = ({scrollToZen, aboutUs,handleSidebar}) => {
       var nav = document.getElementsByClassName("navbar-container")[0];
       if (show) {
         nav.style.backgroundColor = "rgba(0,0,0,0.7)";
-        nav.style.padding = "1.5rem 4rem";
+        // nav.style.padding = "1.5rem 4rem";
       } else {
         nav.style.backgroundColor = "transparent";
-        nav.style.padding = "2.5rem 4rem";
+        // nav.style.padding = "2.5rem 4rem";
       }
     };
     document.addEventListener("scroll", handleScroll);
@@ -31,7 +30,7 @@ const Navbar = ({scrollToZen, aboutUs,handleSidebar}) => {
 
   return (
     <>
-      <div className="navbar-container">
+      <div className="navbar-container backdrop-blur-lg">
         <div
           className="img-container"
           onClick={() => navigate("/")}
@@ -39,22 +38,21 @@ const Navbar = ({scrollToZen, aboutUs,handleSidebar}) => {
         >
           <img src={zairzestLogo} alt="" />
         </div>
-        {
-          width>720 ? 
+        {width > 720 ? (
           <div className="menu-container">
-          {aboutUs ? (
-            <button onClick={() => scrollToZen()}>About Us</button>
-          ) : (
-            ""
-          )}
-          <button onClick={() => navigate("/signup")}>Register</button>
-          <button onClick={() => navigate("/login")}>Sign In</button>
-       </div>:
-        <div>
-          <GiHamburgerMenu color="#fff" size={30} onClick={handleSidebar}/>
-        </div>
-        }
-        
+            {aboutUs ? (
+              <button onClick={() => scrollToZen()}>About Us</button>
+            ) : (
+              ""
+            )}
+            <button onClick={() => navigate("/signup")}>Register</button>
+            <button onClick={() => navigate("/login")}>Sign In</button>
+          </div>
+        ) : (
+          <div>
+            <GiHamburgerMenu color="#fff" size={30} onClick={handleSidebar} />
+          </div>
+        )}
       </div>
     </>
   );

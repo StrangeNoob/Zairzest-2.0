@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import useWindowDimensions from "../../CustomHooks/windowDimension";
 import Sidebar from "../../components/Sidebar";
 import { useState } from "react";
+
 const Landing = () => {
   const navigate = useNavigate();
   const { height, width } = useWindowDimensions();
@@ -38,9 +39,9 @@ const Landing = () => {
           <h1>Experience the Future Tech with Zairza</h1>
           <p>
             Release all your stress with the exciting Tech and Fun events in the
-            most awaited fest. Zairza 2.0 presented by Zairza.
+            most awaited fest. Zairzest 2.0 presented by Zairza.
           </p>
-          <button className="shadow-xl" onClick={() => navigate("/ComingSoon")}>
+          <button className="shadow-xl" onClick={() => navigate("/login")}>
             <p>Register Now</p>
           </button>
         </div>
