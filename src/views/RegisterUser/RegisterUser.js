@@ -80,7 +80,7 @@ function RegisterUser() {
   return (
     <div className="h-screen w-screen md:flex items-center sign-up-container">
       <ToastContainer />
-      <div className="flex-1  pl-8 md:pl-28 md:pr-0 ">
+      <div className="hidden md:flex md:flex-col md:flex-1 pl-8 md:pl-28 md:pr-0 ">
         <h1 className="font-bold text-white text-3xl md:text-6xl mb-12 tracking-wide">
           Experience the
           <br />
@@ -95,9 +95,9 @@ function RegisterUser() {
           <br /> Zairza.
         </p>
       </div>
-      <div className="px-4 md:px-0 md:w-2/5 h-full grid place-items-center bg-white">
+      <div className="px-12 md:px-4 md:px-0 md:w-2/5 h-full grid place-items-center bg-white">
         <div>
-          <h2 className="text-regalbluefont text-4xl font-medium mb-2">
+          <h2 className="text-regalbluefont text-3xl font-medium mb-2">
             Fill in your details
           </h2>
           <p className="text-grayishfaint text-md mb-8">

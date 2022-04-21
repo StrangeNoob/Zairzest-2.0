@@ -17,19 +17,14 @@ import {
 } from "firebase/auth";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import { useEffect } from "react";
-import { async } from "@firebase/util";
 import { config } from "../../config";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../../styles/events.css";
-import Sidebar from "../../components/Sidebar";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSidebar, setIsSidebar] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
   const auth = getAuth();
@@ -78,6 +73,7 @@ const SignUp = () => {
   };
 
   function signUp(userToken) {
+    console.log("Singup ")
     axios
       .get(`${config.BASE_URL}/auth/signup`, {
         headers: {
@@ -100,18 +96,7 @@ const SignUp = () => {
       });
   }
 
-  return isSidebar ? (
-    <Sidebar
-      handleSidebar={() => {
-        setIsSidebar(false);
-      }}
-      aboutUs={false}
-    />
-  ) : (
-    <>
-      <div className="nav-background">
-        <img src={logo} alt="brand-logo" onClick={() => { navigate("/") }} style={{ position: "fixed", top: "2.5rem", left: "7rem", width: "16rem", height: "2rem", cursor: "pointer", margin: "0 auto" }} />
-      </div>
+  return (
       <div className="h-screen w-screen md:flex items-center sign-up-container">
         <ToastContainer />
         <div className="hidden md:flex md:flex-col md:flex-1  pl-8 md:pl-28 md:pr-0 ">
@@ -228,8 +213,6 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
-    </>
   );
 };
 

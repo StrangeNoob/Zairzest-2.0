@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "../../styles/navbar.css";
 import zairzestLogo from "../../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ham from "../../assets/menu.png";
 import useWindowDimensions from "../../CustomHooks/windowDimension";
 
@@ -10,14 +10,28 @@ const Navbar = ({ scrollToZen, aboutUs, handleSidebar }) => {
   const navigate = useNavigate();
   const { width, height } = useWindowDimensions();
 
+  const location = useLocation();
+
+ 
+  useEffect(() => {
+    var nav = document.getElementsByClassName("navbar-container")[0];
+    if(location.pathname!="/"){
+      nav.style.backgroundColor = "rgba(0,0,0,0.9)";
+    }else {
+      nav.style.backgroundColor = "transparent";
+      // nav.style.padding = "2.5rem 4rem";
+    }
+  },[location.pathname])
+
   useEffect(() => {
     const handleScroll = () => {
       const show = window.scrollY > 100;
       var nav = document.getElementsByClassName("navbar-container")[0];
-      if (show) {
+      console.log(location.pathname)
+      if (show ) {
         nav.style.backgroundColor = "rgba(0,0,0,0.7)";
         // nav.style.padding = "1.5rem 4rem";
-      } else {
+      } else if(location.pathname=="/") {
         nav.style.backgroundColor = "transparent";
         // nav.style.padding = "2.5rem 4rem";
       }
@@ -27,6 +41,8 @@ const Navbar = ({ scrollToZen, aboutUs, handleSidebar }) => {
       document.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  console.log(width)
 
   return (
     <>
@@ -38,7 +54,7 @@ const Navbar = ({ scrollToZen, aboutUs, handleSidebar }) => {
         >
           <img src={zairzestLogo} alt="" />
         </div>
-        {width > 720 ? (
+        {(width > 720) ? (
           <div className="menu-container">
             {aboutUs ? (
               <button onClick={() => scrollToZen()}>About Us</button>
