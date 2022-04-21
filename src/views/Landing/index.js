@@ -1,39 +1,14 @@
-import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import "../../styles/landing.css";
 import VR from "../../assets/VR-man.webp";
 import Mascot from "../../assets/mascot.png";
 import { useNavigate } from "react-router-dom";
-import useWindowDimensions from "../../CustomHooks/windowDimension";
-import Sidebar from "../../components/Sidebar";
-import { useState } from "react";
 
 const Landing = () => {
   const navigate = useNavigate();
-  const { height, width } = useWindowDimensions();
-  const [isSidebar, setIsSidebar] = useState(false);
-
-  const scrollToZen = () => {
-    document.getElementById("about").scrollIntoView();
-  };
-  return isSidebar ? (
-    <Sidebar
-      scrollToZen={() => scrollToZen()}
-      handleSidebar={() => {
-        setIsSidebar(false);
-      }}
-    />
-  ) : (
-    <div className="Landing-container">
-      <Navbar
-        scrollToZen={() => {
-          scrollToZen();
-        }}
-        aboutUs={true}
-        handleSidebar={() => {
-          setIsSidebar(true);
-        }}
-      />
+ 
+  return (
+      <div className="Landing-container">
       <div className="hero">
         <div className="hero-content">
           <h1>Experience the Future Tech with Zairza</h1>

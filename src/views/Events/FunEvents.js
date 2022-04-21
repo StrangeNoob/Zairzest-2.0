@@ -1,31 +1,19 @@
 
 import React, { useState } from "react";
 import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
 import { funEvents } from "../../utils/events";
 import "../../styles/events.css";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import Sidebar from '../../components/Sidebar'
 
 const TechEvents = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState(null);
-  const [isSidebar, setIsSidebar] = useState(false);
   const onOpenEventModal = () => setOpenModal(true);
   const onCloseEventModal = () => setOpenModal(false);
 
-  return isSidebar ? (
-    <Sidebar
-      handleSidebar={() => {
-        setIsSidebar(false);
-      }}
-      aboutUs={false}
-    />
-  ) : (
+  return (
     <>
-      <Navbar aboutUs={false} handleSidebar={() => setIsSidebar(true)} />
-      <div className="nav-background"></div>
       <div className="events-container">
         {funEvents.map((event) => {
           return (

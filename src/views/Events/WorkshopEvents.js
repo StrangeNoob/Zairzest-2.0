@@ -1,28 +1,17 @@
 import React, { useState } from "react";
 import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
 import { workshopEvents } from "../../utils/events";
 import "../../styles/events.css";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import Sidebar from '../../components/Sidebar'
+
 const TechEvents = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState(null);
   const onOpenEventModal = () => setOpenModal(true);
   const onCloseEventModal = () => setOpenModal(false);
-  const [isSidebar, setIsSidebar] = useState(false);
-    return isSidebar ? (
-        <Sidebar
-          handleSidebar={() => {
-            setIsSidebar(false);
-          }}
-          aboutUs={false}
-        />
-      ) : (
-        <>
-          <Navbar aboutUs={false} handleSidebar={() => setIsSidebar(true)} />
-      <div className="nav-background"></div>
+  return (
+    <>
       <div className="events-container">
         {workshopEvents.map((event) => {
           return (
@@ -57,10 +46,7 @@ const TechEvents = () => {
         >
           <div className="flex justify-center items-center container">
             <div className="image-container">
-              <img
-                src={modalData.imageURL}
-                alt=""
-              />
+              <img src={modalData.imageURL} alt="" />
             </div>
             <div className="flex flex-col justify-center items-center text-container">
               <h1 className="font-bold text-2xl">{modalData.name}</h1>

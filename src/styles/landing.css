@@ -124,6 +124,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-color: #ebebeb;
   padding: 0 6rem;
 }
 .Landing-container .second-section .img-container {
@@ -181,6 +182,7 @@
 .Landing-container .third-section {
   height: 100vh;
   display: flex;
+  padding: 3rem 0 1rem;
   align-items: center;
   justify-content: center;
   flex-direction: column;
