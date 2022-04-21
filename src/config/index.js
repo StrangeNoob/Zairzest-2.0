@@ -1,3 +1,3 @@
 export const config = {
-  BASE_URL: "https://zairzest-2.herokuapp.com",
+  BASE_URL: "https://apiz.zairza.in",
 };
