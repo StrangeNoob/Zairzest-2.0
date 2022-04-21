@@ -85,7 +85,11 @@ const SignUp = () => {
           toast.success(res.data.message);
           console.log(res.data.data);
           setCookie("userToken", res.data.token);
+          if (res.data.data.isVerified) {
+            navigate("/user", { state: res.data.data });
+          } else{
           navigate("/register", { state: res.data.data });
+          }
         } else {
           toast.error("Some error occured");
         }
