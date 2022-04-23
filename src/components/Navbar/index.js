@@ -25,7 +25,7 @@ const Navbar = ({ scrollToZen, aboutUs, handleSidebar }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const show = window.scrollY > 100;
+      const show = window.scrollY > 50;
       var nav = document.getElementsByClassName("navbar-container")[0];
       console.log(location.pathname)
       if (show ) {
