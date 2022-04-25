@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import { workshopEvents } from "../../utils/events";
 import "../../styles/events.css";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import { useCookies } from 'react-cookie';
+import { toast, ToastContainer } from "react-toastify";
 
 const TechEvents = () => {
+  const [cookies, setCookie] = useCookies();
+  const [showRegister,setShowRegister] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState(null);
   const onOpenEventModal = () => setOpenModal(true);
   const onCloseEventModal = () => setOpenModal(false);
+  useEffect(() => {
+    if(!!cookies['userToken']){
+      setShowRegister(true);
+    }else{
+      setShowRegister(false);
+    }
+  },[])
   return (
     <>
       <div className="events-container">
+        <ToastContainer />
         {workshopEvents.map((event) => {
           return (
             <div
@@ -53,7 +65,21 @@ const TechEvents = () => {
               <h2 className="font-bold text-xl text-stone-600">
                 {modalData.smallDescription}
               </h2>
-              <p>{modalData.description}</p>
+              <p className="flex-wrap">{modalData.description}</p>
+              <div className="flex justify-between items-center w-full mt-4">
+                <span className="font-bold text-xl">
+                  {modalData.name}
+                </span>
+                <span>
+                  <button className="bg-buttonColor px-4 py-2 text-lg text-white rounded-md" onClick={()=>{
+                    if(showRegister){
+                      window.open(modalData.googleFormURL)
+                    }else{
+                      toast.error("Sign In to Register for the Event");
+                    }
+                    }}>Register</button>
+                </span>
+              </div>
             </div>
           </div>
         </Modal>
