@@ -32,17 +32,6 @@ export const funEvents = [
     category: "fun",
   },
   {
-    id: 21,
-    name: "VALORANT",
-    description:
-      "Shoot your shot at winning in this enthralling game of tactical shooters and agents with exceptional abilities with Valorant.",
-    smallDescription: "Experience the Thrill",
-    imageURL: "/assets/event/Valorant.webp",
-    googleFormURL:
-      "https://docs.google.com/forms/d/e/1FAIpQLSc8rVck9-Om5O1iYdKsiOnV3jYHn6ZuGCZNNgStH1Gt2iAOeg/viewform?vc=0&c=0&w=1&flr=0",
-    category: "fun",
-  },
-  {
     id: 22,
     name: "Twister",
     description:
